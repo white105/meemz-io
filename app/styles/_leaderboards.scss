@@ -1,0 +1,41 @@
+.leaderBoardContainer {
+  position: relative;
+  width: 90%;
+  flex: 1;
+  height: 20rem;
+  border: 2px solid #d25d92;
+  margin: auto;
+  margin-top: 1rem;
+  background: white;
+}
+
+.leaderboardTop {
+  margin: 0;
+  background: #2b50b6;
+  #leaderboardTitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+  }
+}
+
+hr {
+  border: 1px solid black;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.player {
+  text-align: center;
+  display: inline-block;
+}
+
+.leaderBoardPlaceTitle {
+  display: inline-block;
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

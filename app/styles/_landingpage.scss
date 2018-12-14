@@ -1,0 +1,84 @@
+.landingPageContainer {
+  background: #2b50b6;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: table-cell;
+  vertical-align: middle;
+
+  .inputTextTitle {
+    color: white;
+    margin: 0;
+    padding-top: 2.5rem;
+  }
+
+  .landingPageMainContainer {
+    margin: auto;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 42rem;
+    width: 50rem;
+    border: 3px solid white;
+    border-radius: .5rem;
+    background: white;
+
+    #meemzLogo {
+      width: 25rem;
+      flex: 2;
+      margin: auto;
+      margin-top: 2.5rem;
+      background: #2b50b6;
+      border-radius: 1rem;
+    }
+
+    .aboutGameGontainer {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 6rem;
+    }
+
+    .newGameContainer {
+      flex: 1;
+      position: relative;
+      width: 50%;
+      height: 10rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .startGameButton {
+        width: 10rem;
+        height: 2.5rem;
+        margin: auto;
+        outline: none;
+        border-radius: .5rem;
+        background: #d25d92;
+        color: white;
+      }
+    }
+  }
+
+}
+
+
+.aboutParagraph {
+  font-size: 1rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.playerUnderline {
+  border: 1px solid #2b50b6;
+}
+
+/* use
+
+ful color? background: #2b50b6; */

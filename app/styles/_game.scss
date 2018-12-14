@@ -1,0 +1,54 @@
+.gameContainer {
+  height: 100vh;
+  display: flex;
+}
+
+.gameTitle {
+  text-align: center;
+}
+
+.spanText {
+  color: #0F0E59;
+}
+
+
+.inputTextTitle {
+  text-align: center;
+}
+
+.inputTextField {
+  display: block;
+  padding: .5rem;
+  border-radius: .5rem;
+  outline: none;
+  text-shadow: none;
+  border: 1px solid #333;
+  width: 90%;
+  margin: auto;
+}
+
+
+.gameTitle {
+  text-align: center;
+}
+
+.gameTopContainer {
+  position: relative;
+  width: 80%;
+  height: 50%;
+  margin: auto;
+}
+
+.gameBottomContainer {
+  position: relative;
+  width: 50%;
+  height: 40%;
+  margin: auto;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.yo {
+  flex: 1;
+}

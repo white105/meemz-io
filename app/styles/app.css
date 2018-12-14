@@ -1,0 +1,765 @@
+.gameContainer {
+  height: 100vh;
+  display: flex; }
+
+.gameTitle {
+  text-align: center; }
+
+.spanText {
+  color: #0F0E59; }
+
+.inputTextTitle {
+  text-align: center; }
+
+.inputTextField {
+  display: block;
+  padding: .5rem;
+  border-radius: .5rem;
+  outline: none;
+  text-shadow: none;
+  border: 1px solid #333;
+  width: 90%;
+  margin: auto; }
+
+.gameTitle {
+  text-align: center; }
+
+.gameTopContainer {
+  position: relative;
+  width: 80%;
+  height: 50%;
+  margin: auto; }
+
+.gameBottomContainer {
+  position: relative;
+  width: 50%;
+  height: 40%;
+  margin: auto;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between; }
+
+.yo {
+  flex: 1; }
+
+.landingPageContainer {
+  background: #2b50b6;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: table-cell;
+  vertical-align: middle; }
+  .landingPageContainer .inputTextTitle {
+    color: white;
+    margin: 0;
+    padding-top: 2.5rem; }
+  .landingPageContainer .landingPageMainContainer {
+    margin: auto;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 42rem;
+    width: 50rem;
+    border: 3px solid white;
+    border-radius: .5rem;
+    background: white; }
+    .landingPageContainer .landingPageMainContainer #meemzLogo {
+      width: 25rem;
+      flex: 2;
+      margin: auto;
+      margin-top: 2.5rem;
+      background: #2b50b6;
+      border-radius: 1rem; }
+    .landingPageContainer .landingPageMainContainer .aboutGameGontainer {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 6rem; }
+    .landingPageContainer .landingPageMainContainer .newGameContainer {
+      flex: 1;
+      position: relative;
+      width: 50%;
+      height: 10rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .landingPageContainer .landingPageMainContainer .newGameContainer .startGameButton {
+        width: 10rem;
+        height: 2.5rem;
+        margin: auto;
+        outline: none;
+        border-radius: .5rem;
+        background: #d25d92;
+        color: white; }
+
+.aboutParagraph {
+  font-size: 1rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 50%;
+  margin: auto;
+  text-align: center; }
+
+.playerUnderline {
+  border: 1px solid #2b50b6; }
+
+/* use
+
+ful color? background: #2b50b6; */
+.leaderBoardContainer {
+  position: relative;
+  width: 90%;
+  flex: 1;
+  height: 20rem;
+  border: 2px solid #d25d92;
+  margin: auto;
+  margin-top: 1rem;
+  background: white; }
+
+.leaderboardTop {
+  margin: 0;
+  background: #2b50b6; }
+  .leaderboardTop #leaderboardTitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding-bottom: .5rem;
+    padding-top: .5rem; }
+
+hr {
+  border: 1px solid black;
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.player {
+  text-align: center;
+  display: inline-block; }
+
+.leaderBoardPlaceTitle {
+  display: inline-block;
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.memeRow {
+  display: flex;
+  width: 80rem;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 1rem;
+  flex-direction: row; }
+
+.meme {
+  width: 20rem;
+  height: 20rem;
+  border: 1px solid black;
+  border-radius: 1rem; }
+
+.memeButtonIsVisible {
+  outline: none;
+  border: 1px solid #0E0F55;
+  border-radius: 1rem;
+  background: #ff5a5a; }
+
+.memeButtonIsVisible {
+  cursor: pointer; }
+
+.memeButtonNotVisible {
+  display: none; }
+
+.memeIsVisible {
+  position: relative;
+  width: 100%;
+  height: 95%;
+  border-radius: 1rem; }
+
+.memeNotVisible {
+  display: none; }
+
+#memePosition1, #memePosition3 {
+  width: 10rem;
+  height: 15rem;
+  opacity: .7; }
+
+#memePosition2 {
+  width: 15rem;
+  height: 20rem; }
+
+.arrowIcon {
+  font-size: 2rem;
+  color: #2b50b6; }
+
+.arrowIconButton {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 4rem;
+  border: 1px solid #2b50b6;
+  background: white;
+  outline: none; }
+
+.arrowIconButton:active {
+  box-shadow: -3px -3px #2b50b6; }
+
+.playerHand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin: auto; }
+
+.submitButton {
+  width: 10rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: .5rem;
+  background: #AB1E88;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #0E0F55; }
+
+.submitButton:active {
+  background: white;
+  color: #AB1E88; }
+
+.spanText {
+  color: #0F0E59; }
+
+.inputTextTitle {
+  text-align: center; }
+
+.inputTextField {
+  display: block;
+  padding: .5rem;
+  border-radius: .5rem;
+  outline: none;
+  text-shadow: none;
+  border: 1px solid #333;
+  width: 90%;
+  margin: auto; }
+
+.gameBottomContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between; }
+
+.submitMemeContainer {
+  position: relative;
+  margin-top: 1rem;
+  height: 20%; }
+
+.bottomContentContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  height: 20rem; }
+
+.submitVersion {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem; }
+
+.captionInstructions {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: "Open Sans", sans-serif;
+  color: white; }
+
+.currentCaptionsContainer {
+  display: none; }
+
+.submitImageContainer {
+  position: relative;
+  height: 80%;
+  flex: 4; }
+  .submitImageContainer .captionedMeme {
+    display: block;
+    position: relative;
+    width: 60%;
+    height: 90%;
+    border: 3px solid #d25d92;
+    margin: auto;
+    border-radius: .5rem; }
+
+.submitMemeButtonContainer {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  .submitMemeButtonContainer .submitMemeButton {
+    display: block;
+    width: 15rem;
+    height: 3rem;
+    border: 1px solid #2b50b6;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    background: #d25d92;
+    color: white;
+    outline: none;
+    font-weight: lighter;
+    font-family: sans-serif;
+    margin: auto; }
+    .submitMemeButtonContainer .submitMemeButton:active {
+      background: white;
+      color: #d25d92; }
+
+.dealerCaptionedMeme {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  margin: auto;
+  margin-top: 1rem;
+  border: 3px solid #d25d92;
+  border-radius: .5rem; }
+
+.dealerCaptionInstructions {
+  color: white;
+  text-align: center; }
+
+.submittedMeme {
+  border-radius: .5rem; }
+
+#arrowIconButtonLeft:active ~ .memeButtonIsVisible {
+  -webkit-animation-name: animate-left;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: animate-left;
+  animation-duration: 1s; }
+
+#arrowIconButtonRight:active ~ .memeButtonIsVisible {
+  -webkit-animation-name: animate-right;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: animate-right;
+  animation-duration: 1s; }
+
+/*animate this*/
+.memeButtonIsVisible {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  -webkit-animation-name: example;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite; }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0% {
+    background-color: red; }
+  25% {
+    background-color: yellow; }
+  50% {
+    background-color: blue; }
+  100% {
+    background-color: green; } }
+
+/* Standard syntax */
+@keyframes example {
+  0% {
+    background-color: red; }
+  25% {
+    background-color: yellow; }
+  50% {
+    background-color: blue; }
+  100% {
+    background-color: green; } }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animate-left {
+  0% {
+    margin-left: -50px; }
+  25% {
+    margin-left: -100px; }
+  50% {
+    margin-left: -150px; }
+  100% {
+    margin-left: -200px; } }
+
+/* Standard syntax */
+@keyframes animate-left {
+  0% {
+    margin-left: -50px; }
+  25% {
+    margin-left: -100px; }
+  50% {
+    margin-left: -150px; }
+  100% {
+    margin-left: -200px; } }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animate-right {
+  0% {
+    margin-right: -50px; }
+  25% {
+    margin-right: -100px; }
+  50% {
+    margin-right: -150px; }
+  100% {
+    margin-right: -200px; } }
+
+/* Standard syntax */
+@keyframes animate-right {
+  0% {
+    margin-right: -50px; }
+  25% {
+    margin-right: -100px; }
+  50% {
+    margin-right: -150px; }
+  100% {
+    margin-right: -200px; } }
+
+.userFormContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+  margin: auto; }
+
+.userForm {
+  width: 20rem;
+  height: 10rem;
+  margin: auto;
+  border: 1px solid #0E0F55;
+  background: #2b50b6;
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10rem; }
+
+.submitButton {
+  width: 10rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: .5rem;
+  background: #d25d92;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+  font-family: sans-serif;
+  border: 1px solid black; }
+  .submitButton:active {
+    background: white;
+    color: #d25d92; }
+
+.sendMessageContainer {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-bottom: 0; }
+
+.messagesTitle {
+  color: white;
+  text-align: center; }
+
+.sendMessageButton {
+  position: relative;
+  width: 7.5rem;
+  height: 2rem;
+  outline: none;
+  font-size: 1rem; }
+
+.messageInputTextField {
+  position: relative;
+  width: 70%;
+  height: 1.85;
+  outline: none; }
+
+.messageInputTextField::placeholder {
+  font-size: .8rem; }
+
+.messageDivItem {
+  width: 90%;
+  height: 2rem;
+  color: white;
+  margin: auto;
+  margin-top: 1rem; }
+
+#meMessage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: .2rem;
+  background: #0084FF; }
+
+#themMessage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: gray;
+  margin-top: 1rem; }
+
+.messageIcon {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+  color: #2b50b6; }
+
+.messagesContainer {
+  flex: 2;
+  overflow: hidden; }
+
+.messagesDiv {
+  position: relative;
+  display: block;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  overflow: scroll;
+  border: 1px solid black;
+  background: white; }
+
+.messageDivItem {
+  width: 90%;
+  height: 2rem;
+  color: white;
+  margin: auto;
+  margin-top: 1rem; }
+
+#meMessage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: .2rem;
+  background: #0084FF; }
+
+#themMessage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: gray;
+  margin-top: 1rem; }
+
+.hrLine {
+  color: #AB1E88;
+  border-color: #AB1E88; }
+
+.topCaptionHeader, .bottomCaptionHeader {
+  padding-left: 1rem;
+  color: white; }
+
+.sidebarContainer {
+  background: #d25d92;
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+hr {
+  border-color: white;
+  background: white; }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
+
+.contentContainer {
+  position: relative;
+  flex: 3;
+  background: #2b50b6;
+  height: 100vh; }
+
+.contentContainerTitle {
+  margin-top: 1rem;
+  color: white;
+  text-align: center; }
+
+.dealerInputDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+  height: 30vh;
+  border: 4px solid white; }
+
+.dealerSubmitVersion {
+  height: 20rem;
+  width: 50%; }
+
+.topCaptionContainer, .bottomCaptionContainer {
+  width: 60%;
+  margin: auto;
+  color: white; }
+
+.captionInputText {
+  text-align: center; }
+
+#topCaption, #bottomCaption {
+  width: 100%;
+  height: 2rem;
+  outline: none;
+  border: 1px solid #0E0F55;
+  border-radius: .5rem;
+  margin: auto; }
+
+#topCaption::placeholder, #bottomCaption::placeholder {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif; }
+
+.dealerContentTopContainer {
+  display: flex;
+  justify-content: space-between; }
+
+.gameInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  color: #AB1E88; }
+
+.roundNumber, .scoreTitle {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  text-align: center;
+  font-family: "Open Sans", sans-serif; }
+
+.scoreDiv {
+  width: 50%;
+  background: #AB1E88;
+  color: white;
+  border-left: 1px solid white; }
+
+.roundNumberDiv {
+  width: 50%;
+  background: #AB1E88;
+  color: white;
+  border-right: 1px solid white; }
+
+.scoreValue, .roundActualNumber {
+  text-align: center;
+  font-size: 3rem; }
+
+.bottomLeftDiv {
+  height: 20rem;
+  width: 15rem;
+  border-radius: .5rem; }
+
+.bottomRightDiv {
+  width: 25rem;
+  height: 20rem;
+  border: 1px solid white;
+  border-radius: .5rem; }
+
+.roundDetailsText {
+  color: white;
+  margin-left: 1rem; }
+
+.roundDetailsTitle {
+  color: white;
+  margin-left: 1rem; }
+
+hr {
+  border-color: white;
+  background: white; }
+
+.dealerContentContainer {
+  position: relative;
+  flex: 3;
+  background: #2b50b6;
+  height: 100%; }
+
+.submittedMemesContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 80%;
+  height: 50%;
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: .5rem;
+  border: 1px solid white; }
+
+.submittedMemeButton {
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid #d25d92;
+  border-radius: .5rem;
+  margin: 1rem;
+  outline: none; }
+
+.submittedMemeButton:hover {
+  cursor: pointer; }
+
+.submittedMemeButton:active {
+  background: #d25d92; }
+
+.submittedMeme {
+  width: 10rem;
+  height: 10rem; }
+
+.positionTitle {
+  color: white;
+  text-align: center;
+  font-family: "Open Sans", sans-serif; }
+
+.submitCaptionsButtonContainer {
+  margin: auto;
+  width: 10rem;
+  height: 2rem; }
+
+.submitCaptionsButton {
+  position: relative;
+  width: 10rem;
+  height: 2rem;
+  outline: none;
+  margin: auto;
+  margin-top: 2rem;
+  font-size: 1rem;
+  border-radius: .5rem;
+  background: #d25d92;
+  border: none;
+  color: white; }
+
+.submitCaptionsButton:active {
+  background: white;
+  color: #d25d92; }
+
+.submissionsTitle {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-align: center;
+  margin-top: 5rem; }
+
+.playerInfoContainer {
+  position: relative;
+  width: 50%;
+  height: 20rem;
+  border-radius: .5rem;
+  border: 1px solid white; }

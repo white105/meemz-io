@@ -1,0 +1,343 @@
+.memeRow {
+  display: flex;
+  width: 80rem;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 1rem;
+  flex-direction: row;
+}
+
+.meme {
+  width: 20rem;
+  height: 20rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.memeButtonIsVisible {
+  outline: none;
+  border: 1px solid #0E0F55;
+  border-radius: 1rem;
+  background: #ff5a5a;
+}
+
+.memeButtonIsVisible {
+  cursor: pointer;
+}
+
+.memeButtonNotVisible {
+  display: none;
+}
+
+.memeIsVisible {
+  position: relative;
+  width: 100%;
+  height: 95%;
+  border-radius: 1rem;
+}
+
+.memeNotVisible {
+  display: none;
+}
+
+#memePosition1, #memePosition3 {
+  width: 10rem;
+  height: 15rem;
+  opacity: .7;
+}
+
+#memePosition2 {
+  width: 15rem;
+  height: 20rem;
+}
+
+.arrowIcon {
+  font-size: 2rem;
+  color: #2b50b6;
+}
+
+.arrowIconButton {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 4rem;
+  border: 1px solid #2b50b6;
+  background: white;
+  outline: none;
+}
+
+.arrowIconButton:active {
+  box-shadow: -3px -3px #2b50b6;
+}
+
+.playerHand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.submitButton {
+  width: 10rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: .5rem;
+  background: #AB1E88;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #0E0F55;
+}
+
+.submitButton:active {
+  background: white;
+  color: #AB1E88;
+}
+
+.spanText {
+  color: #0F0E59;
+}
+
+
+.inputTextTitle {
+  text-align: center;
+}
+
+.inputTextField {
+  display: block;
+  padding: .5rem;
+  border-radius: .5rem;
+  outline: none;
+  text-shadow: none;
+  border: 1px solid #333;
+  width: 90%;
+  margin: auto;
+}
+
+.gameBottomContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.submitMemeContainer {
+  position: relative;
+  margin-top: 1rem;
+  height: 20%;
+}
+
+
+.bottomContentContainer {
+
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  height: 20rem;
+}
+
+.submitVersion {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem;
+}
+
+.captionInstructions {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+}
+
+.currentCaptionsContainer {
+  display: none;
+}
+
+.submitImageContainer {
+  position: relative;
+  height: 80%;
+  flex: 4;
+  .captionedMeme {
+    display: block;
+    position: relative;
+    width: 60%;
+    height: 90%;
+    border: 3px solid #d25d92;
+    margin: auto;
+    border-radius: .5rem;
+  }
+}
+
+.submitMemeButtonContainer {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .submitMemeButton {
+    display: block;
+    width: 15rem;
+    height: 3rem;
+    border: 1px solid #2b50b6;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    background: #d25d92;
+    color: white;
+    outline: none;
+    font-weight: lighter;
+    font-family: sans-serif;
+    margin: auto;
+    &:active {
+      background: white;
+      color: #d25d92;
+    }
+  }
+}
+
+.dealerCaptionedMeme {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  margin: auto;
+  margin-top: 1rem;
+  border: 3px solid #d25d92;
+  border-radius: .5rem;
+
+}
+
+.dealerCaptionInstructions {
+  color: white;
+  text-align: center;
+}
+
+.submittedMeme {
+  border-radius: .5rem;
+}
+
+#arrowIconButtonLeft:active ~ .memeButtonIsVisible {
+  -webkit-animation-name: animate-left; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: animate-left;
+  animation-duration: 1s;
+}
+
+#arrowIconButtonRight:active ~ .memeButtonIsVisible {
+  -webkit-animation-name: animate-right; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: animate-right;
+  animation-duration: 1s;
+}
+
+/*animate this*/
+.memeButtonIsVisible {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {
+    background-color: red;
+  }
+  25%  {
+    background-color: yellow;
+  }
+  50%  {
+    background-color: blue;
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {
+    background-color: red;
+  }
+  25%  {
+    background-color: yellow;
+  }
+  50%  {
+    background-color: blue;
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animate-left {
+  0%   {
+    margin-left: -50px;
+  }
+  25%  {
+    margin-left: -100px;
+  }
+  50%  {
+    margin-left: -150px;
+  }
+  100% {
+    margin-left: -200px;
+  }
+}
+
+/* Standard syntax */
+@keyframes animate-left {
+  0%   {
+    margin-left: -50px;
+  }
+  25%  {
+    margin-left: -100px;
+  }
+  50%  {
+    margin-left: -150px;
+  }
+  100% {
+    margin-left: -200px;
+  }
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animate-right {
+  0%   {
+    margin-right: -50px;
+  }
+  25%  {
+    margin-right: -100px;
+  }
+  50%  {
+    margin-right: -150px;
+  }
+  100% {
+    margin-right: -200px;
+  }
+}
+
+/* Standard syntax */
+@keyframes animate-right {
+  0%   {
+    margin-right: -50px;
+  }
+  25%  {
+    margin-right: -100px;
+  }
+  50%  {
+    margin-right: -150px;
+  }
+  100% {
+    margin-right: -200px;
+  }
+}

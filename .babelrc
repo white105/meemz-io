@@ -1,0 +1,3 @@
+{
+    "presets": [["env", { "loose" : true, "browsers": "last 1 Chrome version" }]]
+}

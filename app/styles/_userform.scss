@@ -1,0 +1,40 @@
+.userFormContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.5);
+  z-index: 1;
+  margin: auto
+}
+
+.userForm {
+  width: 20rem;
+  height: 10rem;
+  margin: auto;
+  border: 1px solid #0E0F55;
+  background: #2b50b6;
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.submitButton {
+  width: 10rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: .5rem;
+  background: #d25d92;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+  font-family: sans-serif;
+  border: 1px solid black;
+  &:active {
+    background: white;
+    color: #d25d92;
+  }
+}
