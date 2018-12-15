@@ -2908,7 +2908,7 @@ var MemeService = function () {
 
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -2920,7 +2920,7 @@ var MemeService = function () {
       //pretty much done
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -37152,6 +37152,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Import css
 
 
+var defaultState = {
+  enteredName: false,
+  nickname: '',
+  room_id: '',
+  client_id: '',
+  cards: [],
+  current_players: [],
+  captioned_img_url: '',
+  top_caption: 'Take her on a date to taco bell',
+  bottom_caption: 'Make her pay',
+  isDealer: false,
+  submitted_memes: [],
+  didSubmit: false,
+  roundNumber: 1
+};
+
 var Game = function (_Component) {
   _inherits(Game, _Component);
 
@@ -37237,7 +37253,6 @@ var Game = function (_Component) {
       this.props.socket.on('win', function (alert_message) {
         alert(alert_message);
         _this2.forceUpdate();
-        location.reload();
       });
 
       this.props.socket.on('meme_submission', function (meme_submission) {
@@ -37371,24 +37386,7 @@ var Game = function (_Component) {
   }, {
     key: 'selectRoundWinner',
     value: function selectRoundWinner(winner_client_id) {
-
-      console.log("You selected a winner!", winner_client_id);
       this.props.socket.emit('winner', winner_client_id);
-
-      this.setState({
-        roundNumber: roundNumber + 1,
-        enteredName: false,
-        nickname: '',
-        room_id: '',
-        cards: [],
-        current_players: [],
-        captioned_img_url: '',
-        top_caption: 'Take her on a date to taco bell',
-        bottom_caption: 'Make her pay',
-        isDealer: true,
-        submitted_memes: [],
-        didSubmit: false
-      });
     }
   }, {
     key: 'generateMeme',

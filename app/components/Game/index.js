@@ -10,6 +10,23 @@ import SocketContext from '../../socket-context'
 
 import MessagesWithSocket from '../Messages/index'
 
+
+const defaultState = {
+  enteredName: false,
+  nickname: '',
+  room_id: '',
+  client_id: '',
+  cards: [],
+  current_players: [],
+  captioned_img_url: '',
+  top_caption: 'Take her on a date to taco bell',
+  bottom_caption: 'Make her pay',
+  isDealer: false,
+  submitted_memes: [],
+  didSubmit: false,
+  roundNumber: 1
+}
+
 class Game extends Component {
 
   constructor(props) {
@@ -91,7 +108,7 @@ class Game extends Component {
 
     this.props.socket.on('win', (alert_message) => {
       alert(alert_message)
-      location.reload();
+      this.forceUpdate()
     })
 
 
@@ -229,25 +246,7 @@ class Game extends Component {
   }
 
   selectRoundWinner(winner_client_id) {
-
-    console.log("You selected a winner!", winner_client_id)
     this.props.socket.emit('winner', winner_client_id)
-
-
-    this.setState({
-      roundNumber : roundNumber + 1,
-      enteredName: false,
-      nickname: '',
-      room_id: '',
-      cards: [],
-      current_players: [],
-      captioned_img_url: '',
-      top_caption: 'Take her on a date to taco bell',
-      bottom_caption: 'Make her pay',
-      isDealer: true,
-      submitted_memes: [],
-      didSubmit: false,
-    })
   }
 
   generateMeme(meme_data, position) {
