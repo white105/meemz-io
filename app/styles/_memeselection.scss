@@ -179,6 +179,7 @@
   position: relative;
   height: 100%;
   width: 100%;
+  margin-top: 2rem;
 
   .submitMemeButton {
     display: block;
@@ -202,13 +203,12 @@
 
 .dealerCaptionedMeme {
   display: block;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   border: 3px solid #d25d92;
   border-radius: .5rem;
-
 }
 
 .dealerCaptionInstructions {

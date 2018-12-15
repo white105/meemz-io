@@ -41,20 +41,85 @@ var numUsers = 0;
 io.on('connection', socket => {
   var addedUser = false;
 
-  console.log("I am connected!", socket.id)
+  /*
+
+  socket.on('get_', meme_url => {
+    console.log("server submit", meme_url)
+    socket.in(socket.room).emit('submitted_meme_url', meme_url);
+    //socket.broadcast.emit('submitted_meme_url', meme_url)
+  });
+
+  */
 
   socket.on("room", connection => {
 
+    /* might wanna leave room
+    if(socket.room)
+        socket.leave(socket.room);
+
+    socket.room = room;
+    socket.join(room);
+    */
+
     console.log("connection", connection)
 
-    console.log("i am in da room!", connection.nickname)
     socket.join(connection.room_id);
     socket.room = connection.room_id;
     socket.nickname = connection.nickname;
     socket.in(connection.room_id).emit("new_joiner", connection.nickname);
+
+    //list of clients in specific game room
+    var clients = io.sockets.adapter.rooms[socket.room].sockets;
+
+    //TODO: logic to pick dealer / players (needs work)
+    var dealer = String(Object.keys(clients)[0]);
+    console.log("This is the dealer!", dealer)
+    io.to(`${dealer}`).emit('dealer', true);
+
+    socket.on('deal', (memes) => {
+
+      console.log("deal event happened")
+
+      let collection = memes
+
+      num_memes = collection.length;
+
+      //list of clients in specific game room
+      var clients = io.sockets.adapter.rooms[socket.room].sockets;
+
+      var numPlayers = Object.keys(clients).length;
+
+      memes_per_user = (numPlayers > 0) ? (num_memes / numPlayers-1) : 8
+
+      var random_nums = []
+      var random_int = Math.floor(Math.random() * memes.length);
+
+      //loops through everyone in room
+      for (var client in clients) {
+        var player_cards = []
+        if (clients.hasOwnProperty(client)) {
+
+          //if client is player send them cards
+          if (client != dealer) {
+            for (var i=0; i<memes_per_user; i++) {
+              random_int = Math.floor(Math.random() * collection.length);
+              //makes sure random int isn't a duplicate
+              while (random_nums.includes(random_int)) { random_int = Math.floor(Math.random() * collection.length) }
+              random_nums.push(random_int)
+              player_cards.push(collection[random_int])
+            }
+            io.to(`${String(client)}`).emit('cards', player_cards);
+          }
+        }
+      }
+
+    });
+
+
   });
 
   socket.on("message", msg => {
+
     console.log("msg", msg)
 
     console.log('socket.nickname', socket.nickname)
@@ -65,33 +130,22 @@ io.on('connection', socket => {
     });
   });
 
-  socket.on('memes_recieved_event', (memes) => {
-
-    let collection = memes
-
-    num_memes = collection.length;
-
-    memes_per_user = (numUsers > 0) ? (num_memes / numUsers) : 6
-
-    var random_nums = []
-    var current_user_memes = []
-    var random_int = Math.floor(Math.random() * memes.length);
-
-    for (var i=0; i<memes_per_user; i++) {
-      random_int = Math.floor(Math.random() * collection.length);
-
-      //makes sure random int isn't a duplicate
-      while (random_nums.includes(random_int)) {
-        random_int = Math.floor(Math.random() * collection.length);
-      }
-
-      random_nums.push(random_int)
-      current_user_memes.push(collection[random_int])
-    }
-
-    io.to(`${socket.id}`).emit('current_player_memes', current_user_memes);
+  socket.on('submitted_meme_url', meme_url => {
+    console.log("server submit", meme_url)
+    socket.in(socket.room).emit('submitted_meme_url', meme_url);
+    //socket.broadcast.emit('submitted_meme_url', meme_url)
   });
 
+  socket.on("new_round", round => {
+
+    let players = round.players;
+    let dealer = players[0]
+
+    socket.in(socket.room).emit("message", {
+      from: socket.nickname,
+      body: msg.body
+    });
+  });
 })
 
   /*
@@ -187,6 +241,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-//server.listen(3000)
+server.listen(3000)
 
-server.listen(process.env.PORT || 5000)
+//server.listen(process.env.PORT || 5000)

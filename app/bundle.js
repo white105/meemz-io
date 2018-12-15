@@ -9881,7 +9881,7 @@ exports = module.exports = __webpack_require__(34)(false);
 
 
 // module
-exports.push([module.i, ".gameContainer {\n  height: 100vh;\n  display: flex; }\n\n.gameTitle {\n  text-align: center; }\n\n.spanText {\n  color: #0F0E59; }\n\n.inputTextTitle {\n  text-align: center; }\n\n.inputTextField {\n  display: block;\n  padding: .5rem;\n  border-radius: .5rem;\n  outline: none;\n  text-shadow: none;\n  border: 1px solid #333;\n  width: 90%;\n  margin: auto; }\n\n.gameTitle {\n  text-align: center; }\n\n.gameTopContainer {\n  position: relative;\n  width: 80%;\n  height: 50%;\n  margin: auto; }\n\n.gameBottomContainer {\n  position: relative;\n  width: 50%;\n  height: 40%;\n  margin: auto;\n  border-radius: 1rem;\n  display: flex;\n  justify-content: space-between; }\n\n.yo {\n  flex: 1; }\n\n.landingPageContainer {\n  background: #2b50b6;\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  display: table-cell;\n  vertical-align: middle; }\n  .landingPageContainer .inputTextTitle {\n    color: white;\n    margin: 0;\n    padding-top: 2.5rem; }\n  .landingPageContainer .landingPageMainContainer {\n    margin: auto;\n    margin-top: 2.5rem;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    height: 42rem;\n    width: 50rem;\n    border: 3px solid white;\n    border-radius: .5rem;\n    background: white; }\n    .landingPageContainer .landingPageMainContainer #meemzLogo {\n      width: 25rem;\n      flex: 2;\n      margin: auto;\n      margin-top: 2.5rem;\n      background: #2b50b6;\n      border-radius: 1rem; }\n    .landingPageContainer .landingPageMainContainer .aboutGameGontainer {\n      flex: 1;\n      position: relative;\n      width: 100%;\n      height: 6rem; }\n    .landingPageContainer .landingPageMainContainer .newGameContainer {\n      flex: 1;\n      position: relative;\n      width: 50%;\n      height: 10rem;\n      margin: auto;\n      display: flex;\n      flex-direction: column;\n      justify-content: space-around; }\n      .landingPageContainer .landingPageMainContainer .newGameContainer .startGameButton {\n        width: 10rem;\n        height: 2.5rem;\n        margin: auto;\n        outline: none;\n        border-radius: .5rem;\n        background: #d25d92;\n        color: white; }\n\n.aboutParagraph {\n  font-size: 1rem;\n  padding-top: 2rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  width: 50%;\n  margin: auto;\n  text-align: center; }\n\n.playerUnderline {\n  border: 1px solid #2b50b6; }\n\n/* use\n\nful color? background: #2b50b6; */\n.leaderBoardContainer {\n  position: relative;\n  width: 90%;\n  flex: 1;\n  height: 20rem;\n  border: 2px solid #d25d92;\n  margin: auto;\n  margin-top: 1rem;\n  background: white; }\n\n.leaderboardTop {\n  margin: 0;\n  background: #2b50b6; }\n  .leaderboardTop #leaderboardTitle {\n    font-size: 1.25rem;\n    text-align: center;\n    color: white;\n    margin: 0;\n    padding-bottom: .5rem;\n    padding-top: .5rem; }\n\nhr {\n  border: 1px solid black;\n  margin-left: 1rem;\n  margin-right: 1rem; }\n\n.player {\n  text-align: center;\n  display: inline-block; }\n\n.leaderBoardPlaceTitle {\n  display: inline-block;\n  font-size: 1rem;\n  margin-left: 1rem;\n  margin-right: 1rem; }\n\n.memeRow {\n  display: flex;\n  width: 80rem;\n  justify-content: space-between;\n  margin: 1rem;\n  padding: 1rem;\n  flex-direction: row; }\n\n.meme {\n  width: 20rem;\n  height: 20rem;\n  border: 1px solid black;\n  border-radius: 1rem; }\n\n.memeButtonIsVisible {\n  outline: none;\n  border: 1px solid #0E0F55;\n  border-radius: 1rem;\n  background: #ff5a5a; }\n\n.memeButtonIsVisible {\n  cursor: pointer; }\n\n.memeButtonNotVisible {\n  display: none; }\n\n.memeIsVisible {\n  position: relative;\n  width: 100%;\n  height: 95%;\n  border-radius: 1rem; }\n\n.memeNotVisible {\n  display: none; }\n\n#memePosition1, #memePosition3 {\n  width: 10rem;\n  height: 15rem;\n  opacity: .7; }\n\n#memePosition2 {\n  width: 15rem;\n  height: 20rem; }\n\n.arrowIcon {\n  font-size: 2rem;\n  color: #2b50b6; }\n\n.arrowIconButton {\n  width: 5rem;\n  height: 5rem;\n  border-radius: 4rem;\n  border: 1px solid #2b50b6;\n  background: white;\n  outline: none; }\n\n.arrowIconButton:active {\n  box-shadow: -3px -3px #2b50b6; }\n\n.playerHand {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  width: 100%;\n  margin: auto; }\n\n.submitButton {\n  width: 10rem;\n  height: 2.5rem;\n  margin: auto;\n  border-radius: .5rem;\n  background: #AB1E88;\n  color: white;\n  outline: none;\n  font-size: 1rem;\n  font-family: \"Open Sans\", sans-serif;\n  border: 1px solid #0E0F55; }\n\n.submitButton:active {\n  background: white;\n  color: #AB1E88; }\n\n.spanText {\n  color: #0F0E59; }\n\n.inputTextTitle {\n  text-align: center; }\n\n.inputTextField {\n  display: block;\n  padding: .5rem;\n  border-radius: .5rem;\n  outline: none;\n  text-shadow: none;\n  border: 1px solid #333;\n  width: 90%;\n  margin: auto; }\n\n.gameBottomContainer {\n  display: flex;\n  flex-direction: row;\n  width: 80%;\n  justify-content: space-between; }\n\n.submitMemeContainer {\n  position: relative;\n  margin-top: 1rem;\n  height: 20%; }\n\n.bottomContentContainer {\n  display: flex;\n  justify-content: space-between;\n  width: 80%;\n  margin: auto;\n  height: 20rem; }\n\n.submitVersion {\n  position: relative;\n  flex: 1;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  border-radius: .5rem; }\n\n.captionInstructions {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  font-family: \"Open Sans\", sans-serif;\n  color: white; }\n\n.currentCaptionsContainer {\n  display: none; }\n\n.submitImageContainer {\n  position: relative;\n  height: 80%;\n  flex: 4; }\n  .submitImageContainer .captionedMeme {\n    display: block;\n    position: relative;\n    width: 60%;\n    height: 90%;\n    border: 3px solid #d25d92;\n    margin: auto;\n    border-radius: .5rem; }\n\n.submitMemeButtonContainer {\n  flex: 1;\n  position: relative;\n  height: 100%;\n  width: 100%; }\n  .submitMemeButtonContainer .submitMemeButton {\n    display: block;\n    width: 15rem;\n    height: 3rem;\n    border: 1px solid #2b50b6;\n    border-radius: .5rem;\n    font-size: 1.2rem;\n    background: #d25d92;\n    color: white;\n    outline: none;\n    font-weight: lighter;\n    font-family: sans-serif;\n    margin: auto; }\n    .submitMemeButtonContainer .submitMemeButton:active {\n      background: white;\n      color: #d25d92; }\n\n.dealerCaptionedMeme {\n  display: block;\n  width: 10rem;\n  height: 10rem;\n  margin: auto;\n  margin-top: 1rem;\n  border: 3px solid #d25d92;\n  border-radius: .5rem; }\n\n.dealerCaptionInstructions {\n  color: white;\n  text-align: center; }\n\n.submittedMeme {\n  border-radius: .5rem; }\n\n#arrowIconButtonLeft:active ~ .memeButtonIsVisible {\n  -webkit-animation-name: animate-left;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 1s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: animate-left;\n  animation-duration: 1s; }\n\n#arrowIconButtonRight:active ~ .memeButtonIsVisible {\n  -webkit-animation-name: animate-right;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 1s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: animate-right;\n  animation-duration: 1s; }\n\n/*animate this*/\n.memeButtonIsVisible {\n  width: 100px;\n  height: 100px;\n  background-color: red;\n  -webkit-animation-name: example;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 4s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: example;\n  animation-duration: 4s;\n  animation-iteration-count: infinite; }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes example {\n  0% {\n    background-color: red; }\n  25% {\n    background-color: yellow; }\n  50% {\n    background-color: blue; }\n  100% {\n    background-color: green; } }\n\n/* Standard syntax */\n@keyframes example {\n  0% {\n    background-color: red; }\n  25% {\n    background-color: yellow; }\n  50% {\n    background-color: blue; }\n  100% {\n    background-color: green; } }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes animate-left {\n  0% {\n    margin-left: -50px; }\n  25% {\n    margin-left: -100px; }\n  50% {\n    margin-left: -150px; }\n  100% {\n    margin-left: -200px; } }\n\n/* Standard syntax */\n@keyframes animate-left {\n  0% {\n    margin-left: -50px; }\n  25% {\n    margin-left: -100px; }\n  50% {\n    margin-left: -150px; }\n  100% {\n    margin-left: -200px; } }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes animate-right {\n  0% {\n    margin-right: -50px; }\n  25% {\n    margin-right: -100px; }\n  50% {\n    margin-right: -150px; }\n  100% {\n    margin-right: -200px; } }\n\n/* Standard syntax */\n@keyframes animate-right {\n  0% {\n    margin-right: -50px; }\n  25% {\n    margin-right: -100px; }\n  50% {\n    margin-right: -150px; }\n  100% {\n    margin-right: -200px; } }\n\n.userFormContainer {\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(255, 255, 255, 0.5);\n  z-index: 1;\n  margin: auto; }\n\n.userForm {\n  width: 20rem;\n  height: 10rem;\n  margin: auto;\n  border: 1px solid #0E0F55;\n  background: #2b50b6;\n  color: white;\n  border-radius: 1rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin-top: 10rem; }\n\n.submitButton {\n  width: 10rem;\n  height: 2.5rem;\n  margin: auto;\n  border-radius: .5rem;\n  background: #d25d92;\n  color: white;\n  outline: none;\n  font-size: 1rem;\n  font-family: sans-serif;\n  border: 1px solid black; }\n  .submitButton:active {\n    background: white;\n    color: #d25d92; }\n\n.sendMessageContainer {\n  position: relative;\n  width: 90%;\n  margin: auto;\n  margin-top: 1rem;\n  height: 2rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  border: 1px solid black;\n  border-bottom: 0; }\n\n.messagesTitle {\n  color: white;\n  text-align: center; }\n\n.sendMessageButton {\n  position: relative;\n  width: 7.5rem;\n  height: 2rem;\n  outline: none;\n  font-size: 1rem; }\n\n.messageInputTextField {\n  position: relative;\n  width: 70%;\n  height: 1.85;\n  outline: none; }\n\n.messageInputTextField::placeholder {\n  font-size: .8rem; }\n\n.messageDivItem {\n  width: 90%;\n  height: 2rem;\n  color: white;\n  margin: auto;\n  margin-top: 1rem; }\n\n#meMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  margin-top: 1rem;\n  border-radius: .2rem;\n  background: #0084FF; }\n\n#themMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  background: gray;\n  margin-top: 1rem; }\n\n.messageIcon {\n  margin-left: 1rem;\n  font-size: 1.25rem;\n  color: #2b50b6; }\n\n.messagesContainer {\n  flex: 2;\n  overflow: hidden; }\n\n.messagesDiv {\n  position: relative;\n  display: block;\n  width: 90%;\n  height: 80%;\n  margin: auto;\n  overflow: scroll;\n  border: 1px solid black;\n  background: white; }\n\n.messageDivItem {\n  width: 90%;\n  height: 2rem;\n  color: white;\n  margin: auto;\n  margin-top: 1rem; }\n\n#meMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  margin-top: 1rem;\n  border-radius: .2rem;\n  background: #0084FF; }\n\n#themMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  background: gray;\n  margin-top: 1rem; }\n\n.hrLine {\n  color: #AB1E88;\n  border-color: #AB1E88; }\n\n.topCaptionHeader, .bottomCaptionHeader {\n  padding-left: 1rem;\n  color: white; }\n\n.sidebarContainer {\n  background: #d25d92;\n  flex: 1;\n  height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhr {\n  border-color: white;\n  background: white; }\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\", monospace; }\n\n.contentContainer {\n  position: relative;\n  flex: 3;\n  background: #2b50b6;\n  height: 100vh; }\n\n.contentContainerTitle {\n  margin-top: 1rem;\n  color: white;\n  text-align: center; }\n\n.dealerInputDiv {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 50%;\n  margin: auto;\n  height: 30vh;\n  border: 4px solid white; }\n\n.dealerSubmitVersion {\n  height: 20rem;\n  width: 50%; }\n\n.topCaptionContainer, .bottomCaptionContainer {\n  width: 60%;\n  margin: auto;\n  color: white; }\n\n.captionInputText {\n  text-align: center; }\n\n#topCaption, #bottomCaption {\n  width: 100%;\n  height: 2rem;\n  outline: none;\n  border: 1px solid #0E0F55;\n  border-radius: .5rem;\n  margin: auto; }\n\n#topCaption::placeholder, #bottomCaption::placeholder {\n  font-size: 1rem;\n  font-family: \"Open Sans\", sans-serif; }\n\n.dealerContentTopContainer {\n  display: flex;\n  justify-content: space-between; }\n\n.gameInfoContainer {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  position: relative;\n  width: 100%;\n  height: 10rem;\n  color: #AB1E88; }\n\n.roundNumber, .scoreTitle {\n  margin-top: 1rem;\n  font-size: 1.5rem;\n  text-transform: capitalize;\n  text-align: center;\n  font-family: \"Open Sans\", sans-serif; }\n\n.scoreDiv {\n  width: 50%;\n  background: #AB1E88;\n  color: white;\n  border-left: 1px solid white; }\n\n.roundNumberDiv {\n  width: 50%;\n  background: #AB1E88;\n  color: white;\n  border-right: 1px solid white; }\n\n.scoreValue, .roundActualNumber {\n  text-align: center;\n  font-size: 3rem; }\n\n.bottomLeftDiv {\n  height: 20rem;\n  width: 15rem;\n  border-radius: .5rem; }\n\n.bottomRightDiv {\n  width: 25rem;\n  height: 20rem;\n  border: 1px solid white;\n  border-radius: .5rem; }\n\n.roundDetailsText {\n  color: white;\n  margin-left: 1rem; }\n\n.roundDetailsTitle {\n  color: white;\n  margin-left: 1rem; }\n\nhr {\n  border-color: white;\n  background: white; }\n\n.dealerContentContainer {\n  position: relative;\n  flex: 3;\n  background: #2b50b6;\n  height: 100%; }\n\n.submittedMemesContainer {\n  display: flex;\n  flex-direction: row;\n  position: relative;\n  width: 80%;\n  height: 50%;\n  margin: auto;\n  margin-top: 1rem;\n  border-radius: .5rem;\n  border: 1px solid white; }\n\n.submittedMemeButton {\n  width: 10rem;\n  height: 10rem;\n  border: 1px solid #d25d92;\n  border-radius: .5rem;\n  margin: 1rem;\n  outline: none; }\n\n.submittedMemeButton:hover {\n  cursor: pointer; }\n\n.submittedMemeButton:active {\n  background: #d25d92; }\n\n.submittedMeme {\n  width: 10rem;\n  height: 10rem; }\n\n.positionTitle {\n  color: white;\n  text-align: center;\n  font-family: \"Open Sans\", sans-serif; }\n\n.submitCaptionsButtonContainer {\n  margin: auto;\n  width: 10rem;\n  height: 2rem; }\n\n.submitCaptionsButton {\n  position: relative;\n  width: 10rem;\n  height: 2rem;\n  outline: none;\n  margin: auto;\n  margin-top: 2rem;\n  font-size: 1rem;\n  border-radius: .5rem;\n  background: #d25d92;\n  border: none;\n  color: white; }\n\n.submitCaptionsButton:active {\n  background: white;\n  color: #d25d92; }\n\n.submissionsTitle {\n  font-family: \"Open Sans\", sans-serif;\n  color: white;\n  text-align: center;\n  margin-top: 5rem; }\n\n.playerInfoContainer {\n  position: relative;\n  width: 50%;\n  height: 20rem;\n  border-radius: .5rem;\n  border: 1px solid white; }\n", ""]);
+exports.push([module.i, ".gameContainer {\n  height: 100vh;\n  display: flex; }\n\n.gameTitle {\n  text-align: center; }\n\n.spanText {\n  color: #0F0E59; }\n\n.inputTextTitle {\n  text-align: center; }\n\n.inputTextField {\n  display: block;\n  padding: .5rem;\n  border-radius: .5rem;\n  outline: none;\n  text-shadow: none;\n  border: 1px solid #333;\n  width: 90%;\n  margin: auto; }\n\n.gameTitle {\n  text-align: center; }\n\n.gameTopContainer {\n  position: relative;\n  width: 80%;\n  height: 50%;\n  margin: auto; }\n\n.gameBottomContainer {\n  position: relative;\n  width: 50%;\n  height: 40%;\n  margin: auto;\n  border-radius: 1rem;\n  display: flex;\n  justify-content: space-between; }\n\n.yo {\n  flex: 1; }\n\n.landingPageContainer {\n  background: #2b50b6;\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  display: table-cell;\n  vertical-align: middle; }\n  .landingPageContainer .inputTextTitle {\n    color: white;\n    margin: 0;\n    padding-top: 2.5rem; }\n  .landingPageContainer .landingPageMainContainer {\n    margin: auto;\n    margin-top: 2.5rem;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    height: 42rem;\n    width: 50rem;\n    border: 3px solid white;\n    border-radius: .5rem;\n    background: white; }\n    .landingPageContainer .landingPageMainContainer #meemzLogo {\n      width: 25rem;\n      flex: 2;\n      margin: auto;\n      margin-top: 2.5rem;\n      background: #2b50b6;\n      border-radius: 1rem; }\n    .landingPageContainer .landingPageMainContainer .aboutGameGontainer {\n      flex: 1;\n      position: relative;\n      width: 100%;\n      height: 6rem; }\n    .landingPageContainer .landingPageMainContainer .newGameContainer {\n      flex: 1;\n      position: relative;\n      width: 50%;\n      height: 10rem;\n      margin: auto;\n      display: flex;\n      flex-direction: column;\n      justify-content: space-around; }\n      .landingPageContainer .landingPageMainContainer .newGameContainer .startGameButton {\n        width: 10rem;\n        height: 2.5rem;\n        margin: auto;\n        outline: none;\n        border-radius: .5rem;\n        background: #d25d92;\n        color: white; }\n\n.aboutParagraph {\n  font-size: 1rem;\n  padding-top: 2rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  width: 50%;\n  margin: auto;\n  text-align: center; }\n\n.playerUnderline {\n  border: 1px solid #2b50b6; }\n\n/* use\n\nful color? background: #2b50b6; */\n.leaderBoardContainer {\n  position: relative;\n  width: 90%;\n  flex: 1;\n  height: 20rem;\n  border: 2px solid #d25d92;\n  margin: auto;\n  margin-top: 1rem;\n  background: white; }\n\n.leaderboardTop {\n  margin: 0;\n  background: #2b50b6; }\n  .leaderboardTop #leaderboardTitle {\n    font-size: 1.25rem;\n    text-align: center;\n    color: white;\n    margin: 0;\n    padding-bottom: .5rem;\n    padding-top: .5rem; }\n\nhr {\n  border: 1px solid black;\n  margin-left: 1rem;\n  margin-right: 1rem; }\n\n.player {\n  text-align: center;\n  display: inline-block; }\n\n.leaderBoardPlaceTitle {\n  display: inline-block;\n  font-size: 1rem;\n  margin-left: 1rem;\n  margin-right: 1rem; }\n\n.memeRow {\n  display: flex;\n  width: 80rem;\n  justify-content: space-between;\n  margin: 1rem;\n  padding: 1rem;\n  flex-direction: row; }\n\n.meme {\n  width: 20rem;\n  height: 20rem;\n  border: 1px solid black;\n  border-radius: 1rem; }\n\n.memeButtonIsVisible {\n  outline: none;\n  border: 1px solid #0E0F55;\n  border-radius: 1rem;\n  background: #ff5a5a; }\n\n.memeButtonIsVisible {\n  cursor: pointer; }\n\n.memeButtonNotVisible {\n  display: none; }\n\n.memeIsVisible {\n  position: relative;\n  width: 100%;\n  height: 95%;\n  border-radius: 1rem; }\n\n.memeNotVisible {\n  display: none; }\n\n#memePosition1, #memePosition3 {\n  width: 10rem;\n  height: 15rem;\n  opacity: .7; }\n\n#memePosition2 {\n  width: 15rem;\n  height: 20rem; }\n\n.arrowIcon {\n  font-size: 2rem;\n  color: #2b50b6; }\n\n.arrowIconButton {\n  width: 5rem;\n  height: 5rem;\n  border-radius: 4rem;\n  border: 1px solid #2b50b6;\n  background: white;\n  outline: none; }\n\n.arrowIconButton:active {\n  box-shadow: -3px -3px #2b50b6; }\n\n.playerHand {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  width: 100%;\n  margin: auto; }\n\n.submitButton {\n  width: 10rem;\n  height: 2.5rem;\n  margin: auto;\n  border-radius: .5rem;\n  background: #AB1E88;\n  color: white;\n  outline: none;\n  font-size: 1rem;\n  font-family: \"Open Sans\", sans-serif;\n  border: 1px solid #0E0F55; }\n\n.submitButton:active {\n  background: white;\n  color: #AB1E88; }\n\n.spanText {\n  color: #0F0E59; }\n\n.inputTextTitle {\n  text-align: center; }\n\n.inputTextField {\n  display: block;\n  padding: .5rem;\n  border-radius: .5rem;\n  outline: none;\n  text-shadow: none;\n  border: 1px solid #333;\n  width: 90%;\n  margin: auto; }\n\n.gameBottomContainer {\n  display: flex;\n  flex-direction: row;\n  width: 80%;\n  justify-content: space-between; }\n\n.submitMemeContainer {\n  position: relative;\n  margin-top: 1rem;\n  height: 20%; }\n\n.bottomContentContainer {\n  display: flex;\n  justify-content: space-between;\n  width: 80%;\n  margin: auto;\n  height: 20rem; }\n\n.submitVersion {\n  position: relative;\n  flex: 1;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  border-radius: .5rem; }\n\n.captionInstructions {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  font-family: \"Open Sans\", sans-serif;\n  color: white; }\n\n.currentCaptionsContainer {\n  display: none; }\n\n.submitImageContainer {\n  position: relative;\n  height: 80%;\n  flex: 4; }\n  .submitImageContainer .captionedMeme {\n    display: block;\n    position: relative;\n    width: 60%;\n    height: 90%;\n    border: 3px solid #d25d92;\n    margin: auto;\n    border-radius: .5rem; }\n\n.submitMemeButtonContainer {\n  flex: 1;\n  position: relative;\n  height: 100%;\n  width: 100%;\n  margin-top: 2rem; }\n  .submitMemeButtonContainer .submitMemeButton {\n    display: block;\n    width: 15rem;\n    height: 3rem;\n    border: 1px solid #2b50b6;\n    border-radius: .5rem;\n    font-size: 1.2rem;\n    background: #d25d92;\n    color: white;\n    outline: none;\n    font-weight: lighter;\n    font-family: sans-serif;\n    margin: auto; }\n    .submitMemeButtonContainer .submitMemeButton:active {\n      background: white;\n      color: #d25d92; }\n\n.dealerCaptionedMeme {\n  display: block;\n  width: 12rem;\n  height: 12rem;\n  margin: auto;\n  margin-top: 2.5rem;\n  border: 3px solid #d25d92;\n  border-radius: .5rem; }\n\n.dealerCaptionInstructions {\n  color: white;\n  text-align: center; }\n\n.submittedMeme {\n  border-radius: .5rem; }\n\n#arrowIconButtonLeft:active ~ .memeButtonIsVisible {\n  -webkit-animation-name: animate-left;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 1s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: animate-left;\n  animation-duration: 1s; }\n\n#arrowIconButtonRight:active ~ .memeButtonIsVisible {\n  -webkit-animation-name: animate-right;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 1s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: animate-right;\n  animation-duration: 1s; }\n\n/*animate this*/\n.memeButtonIsVisible {\n  width: 100px;\n  height: 100px;\n  background-color: red;\n  -webkit-animation-name: example;\n  /* Safari 4.0 - 8.0 */\n  -webkit-animation-duration: 4s;\n  /* Safari 4.0 - 8.0 */\n  animation-name: example;\n  animation-duration: 4s;\n  animation-iteration-count: infinite; }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes example {\n  0% {\n    background-color: red; }\n  25% {\n    background-color: yellow; }\n  50% {\n    background-color: blue; }\n  100% {\n    background-color: green; } }\n\n/* Standard syntax */\n@keyframes example {\n  0% {\n    background-color: red; }\n  25% {\n    background-color: yellow; }\n  50% {\n    background-color: blue; }\n  100% {\n    background-color: green; } }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes animate-left {\n  0% {\n    margin-left: -50px; }\n  25% {\n    margin-left: -100px; }\n  50% {\n    margin-left: -150px; }\n  100% {\n    margin-left: -200px; } }\n\n/* Standard syntax */\n@keyframes animate-left {\n  0% {\n    margin-left: -50px; }\n  25% {\n    margin-left: -100px; }\n  50% {\n    margin-left: -150px; }\n  100% {\n    margin-left: -200px; } }\n\n/* Safari 4.0 - 8.0 */\n@-webkit-keyframes animate-right {\n  0% {\n    margin-right: -50px; }\n  25% {\n    margin-right: -100px; }\n  50% {\n    margin-right: -150px; }\n  100% {\n    margin-right: -200px; } }\n\n/* Standard syntax */\n@keyframes animate-right {\n  0% {\n    margin-right: -50px; }\n  25% {\n    margin-right: -100px; }\n  50% {\n    margin-right: -150px; }\n  100% {\n    margin-right: -200px; } }\n\n.userFormContainer {\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(255, 255, 255, 0.5);\n  z-index: 1;\n  margin: auto; }\n\n.userForm {\n  width: 20rem;\n  height: 10rem;\n  margin: auto;\n  border: 1px solid #0E0F55;\n  background: #2b50b6;\n  color: white;\n  border-radius: 1rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin-top: 10rem; }\n\n.submitButton {\n  width: 10rem;\n  height: 2.5rem;\n  margin: auto;\n  border-radius: .5rem;\n  background: #d25d92;\n  color: white;\n  outline: none;\n  font-size: 1rem;\n  font-family: sans-serif;\n  border: 1px solid black; }\n  .submitButton:active {\n    background: white;\n    color: #d25d92; }\n\n.sendMessageContainer {\n  position: relative;\n  width: 90%;\n  margin: auto;\n  margin-top: 1rem;\n  height: 2rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  border: 1px solid black;\n  border-bottom: 0; }\n\n.messagesTitle {\n  color: white;\n  text-align: center; }\n\n.sendMessageButton {\n  position: relative;\n  width: 7.5rem;\n  height: 2rem;\n  outline: none;\n  font-size: 1rem; }\n\n.messageInputTextField {\n  position: relative;\n  width: 70%;\n  height: 1.85;\n  outline: none; }\n\n.messageInputTextField::placeholder {\n  font-size: .8rem; }\n\n.messageDivItem {\n  width: 90%;\n  height: 2rem;\n  color: white;\n  margin: auto;\n  margin-top: 1rem; }\n\n#meMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  margin-top: 1rem;\n  border-radius: .2rem;\n  background: #0084FF; }\n\n#themMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  background: gray;\n  margin-top: 1rem; }\n\n.messageIcon {\n  margin-left: 1rem;\n  font-size: 1.25rem;\n  color: #2b50b6; }\n\n.messagesContainer {\n  flex: 2;\n  overflow: hidden; }\n\n.messagesDiv {\n  position: relative;\n  display: block;\n  width: 90%;\n  height: 80%;\n  margin: auto;\n  overflow: scroll;\n  border: 1px solid black;\n  background: white; }\n\n.messageDivItem {\n  width: 90%;\n  height: 2rem;\n  color: white;\n  margin: auto;\n  margin-top: 1rem; }\n\n#meMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  margin-top: 1rem;\n  border-radius: .2rem;\n  background: #0084FF; }\n\n#themMessage {\n  position: relative;\n  height: 100%;\n  width: 100%;\n  background: gray;\n  margin-top: 1rem; }\n\n.hrLine {\n  color: #AB1E88;\n  border-color: #AB1E88; }\n\n.topCaptionHeader, .bottomCaptionHeader {\n  padding-left: 1rem;\n  color: white; }\n\n.sidebarContainer {\n  background: #d25d92;\n  flex: 1;\n  height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\nhr {\n  border-color: white;\n  background: white; }\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\", monospace; }\n\n.contentContainer {\n  position: relative;\n  flex: 3;\n  background: #2b50b6;\n  height: 100vh; }\n\n.contentContainerTitle {\n  margin-top: 1rem;\n  color: white;\n  text-align: center; }\n\n.dealerInputDiv {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  position: relative;\n  width: 50%;\n  height: 20rem;\n  margin: auto; }\n\n.dealerSubmitVersion {\n  height: 20rem;\n  width: 50%; }\n\n.topCaptionContainer, .bottomCaptionContainer {\n  width: 60%;\n  margin: auto;\n  color: white; }\n\n.captionInputText {\n  text-align: center; }\n\n#topCaption, #bottomCaption {\n  width: 100%;\n  height: 2rem;\n  outline: none;\n  border: 1px solid #0E0F55;\n  border-radius: .5rem;\n  margin: auto; }\n\n#topCaption::placeholder, #bottomCaption::placeholder {\n  font-size: 1rem;\n  font-family: \"Open Sans\", sans-serif; }\n\n.dealerContentTopContainer {\n  display: flex;\n  justify-content: space-between; }\n\n.gameInfoContainer {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  position: relative;\n  width: 100%;\n  height: 10rem;\n  color: #AB1E88; }\n\n.roundNumber, .scoreTitle {\n  margin-top: 1rem;\n  font-size: 1.5rem;\n  text-transform: capitalize;\n  text-align: center;\n  font-family: \"Open Sans\", sans-serif; }\n\n.scoreDiv {\n  width: 50%;\n  background: #AB1E88;\n  color: white;\n  border-left: 1px solid white; }\n\n.roundNumberDiv {\n  width: 50%;\n  background: #AB1E88;\n  color: white;\n  border-right: 1px solid white; }\n\n.scoreValue, .roundActualNumber {\n  text-align: center;\n  font-size: 3rem; }\n\n.bottomLeftDiv {\n  height: 20rem;\n  width: 15rem;\n  border-radius: .5rem; }\n\n.bottomRightDiv {\n  width: 25rem;\n  height: 20rem;\n  border: 1px solid white;\n  border-radius: .5rem; }\n\n.roundDetailsText {\n  color: white;\n  margin-left: 1rem; }\n\n.roundDetailsTitle {\n  color: white;\n  margin-left: 1rem; }\n\nhr {\n  border-color: white;\n  background: white; }\n\n.dealerContentContainer {\n  position: relative;\n  flex: 3;\n  background: #2b50b6;\n  height: 100%; }\n\n.submittedMemesContainer {\n  display: flex;\n  flex-direction: row;\n  position: relative;\n  width: 80%;\n  height: 55%;\n  margin: auto;\n  margin-top: 3rem;\n  border-radius: .5rem;\n  border: 1px solid white; }\n\n.submittedMemeButton {\n  width: 10rem;\n  height: 10rem;\n  border: 1px solid #d25d92;\n  border-radius: .5rem;\n  margin: 1rem;\n  outline: none; }\n\n.submittedMemeButton:hover {\n  cursor: pointer; }\n\n.submittedMemeButton:active {\n  background: #d25d92; }\n\n.submittedMeme {\n  width: 10rem;\n  height: 10rem; }\n\n.positionTitle {\n  color: white;\n  text-align: center;\n  font-family: \"Open Sans\", sans-serif; }\n\n.submitCaptionsButtonContainer {\n  margin: auto;\n  width: 10rem;\n  height: 2rem; }\n\n.submitCaptionsButton {\n  position: relative;\n  width: 10rem;\n  height: 2rem;\n  outline: none;\n  margin: auto;\n  font-size: 1rem;\n  border-radius: .5rem;\n  background: #d25d92;\n  border: none;\n  color: white; }\n\n.submitCaptionsButton:active {\n  background: white;\n  color: #d25d92; }\n\n.submissionsTitle {\n  font-family: \"Open Sans\", sans-serif;\n  color: white;\n  text-align: center;\n  margin-top: 5rem; }\n\n.playerInfoContainer {\n  position: relative;\n  width: 50%;\n  height: 20rem;\n  border-radius: .5rem;\n  border: 1px solid white; }\n", ""]);
 
 // exports
 
@@ -37162,14 +37162,15 @@ var Game = function (_Component) {
       enteredName: false,
       nickname: '',
       room_id: '',
-      current_player_memes: [],
+      cards: [],
       current_players: [],
       captioned_img_url: '',
       top_caption: 'Take her on a date to taco bell',
       bottom_caption: 'Make her pay',
-      isDealer: true,
+      isDealer: false,
       submitted_memes: [],
-      didSubmit: false
+      didSubmit: false,
+      roundNumber: 1
     };
 
     _this.memeService = new _index2.default();
@@ -37193,6 +37194,20 @@ var Game = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      this.props.socket.on('dealer', function (bool) {
+        console.log("We got that dealer bool", bool);
+
+        if (bool) {
+          _this2.setState({ isDealer: bool });
+          _axios2.default.get('https://api.imgflip.com/get_memes').then(function (response) {
+            var memes = response.data.data.memes;
+            _this2.props.socket.emit('deal', memes);
+          }).catch(function (error) {
+            console.log(error);
+          });
+        }
+      });
+
       //console.log("document.cookie", document.cookie)
 
       //var cookies = document.cookie.split(';');
@@ -37209,8 +37224,6 @@ var Game = function (_Component) {
 
       this.props.socket.emit("room", connection);
 
-      console.log("localStorage nickname", nickname);
-
       if (!!nickname) {
         this.setState({ nickname: nickname });
       }
@@ -37224,105 +37237,39 @@ var Game = function (_Component) {
         }
          this.props.socket.emit("room", connection);
       }
-        if (cookies[i].includes('nickname')) {
-        var cookie_parts = cookies[i].split("=")
-        console.log("cookie_parts", cookie_parts)
-        this.setState({ nickname : String(cookie_parts[1]) })
-        console.log('this.state.nickname', this.state.nickname)
-       } else if (cookies[i].includes('room_id')) {
-        var cookie_parts = cookies[i].split("=")
-        var cookie_room_id = cookie[i]
-        if (room_id != cookie_room_id) {
-          console.log("room id != cookie id")
-          var date = new Date();
-          date.setTime(date.getTime());
-          var expires = "; expires="+date.toGMTString();
-          cookies[i].concat(expires);
-        }
-        //this.setState({ room_id : String(cookie_parts[1]) })
-        console.log('this.state.room_id', cookie_parts[1])
-      }
-      */
-
-      /*
-      var open_userForm = false
-      if (cookies.length > 0) {
-        for (var i=0; i<cookies.length; i++) {
-          if (cookies[i].includes('room_id')) {
-            console.log("room id != cookie id")
-            var cookie_parts = cookies[i].split("=")
-            var cookie_room_id = cookie[i]
-            if (cookie_room_id ! room_id) {
-              var date = new Date();
-              date.setTime(date.getTime());
-              var expires = "; expires="+date.toGMTString();
-              cookies[i].concat(expires);
-            } else {
-              console.log("else")
-            }
-          }
-          console.log('this.state.room_id', cookie_parts[1])
-        }
-      }
-      */
-
-      _axios2.default.get('https://api.imgflip.com/get_memes').then(function (response) {
-        var memes = response.data.data.memes;
-        _this2.props.socket.emit('memes_recieved_event', memes);
-        //this.setState({ current_player_memes : memes })
-      }).catch(function (error) {
-        console.log(error);
-      });
+       */
 
       this.props.socket.on('submitted_meme_url', function (meme_url) {
         _this2.setState({ submitted_memes: [meme_url].concat(_toConsumableArray(_this2.state.submitted_memes)) });
       });
 
-      this.props.socket.on('current_player_memes', function (memes) {
+      this.props.socket.on('cards', function (cards) {
         _this2.setState({
-          current_player_memes: memes
+          cards: cards
         });
       });
     }
   }, {
     key: 'leftButtonClicked',
     value: function leftButtonClicked() {
-      var my_hand = this.state.current_player_memes;
+      var my_hand = this.state.cards;
       var last_card = my_hand[my_hand.length - 1];
 
-      /*do animations
-         */
-
+      //TODO: Smooth Card Animations
       my_hand.splice(my_hand.length - 1, 1);
       my_hand.unshift(last_card);
-      this.setState({ current_player_memes: my_hand });
-
-      /*
-      setTimeout(() => {
-        my_hand.splice(my_hand.length-1, 1)
-        my_hand.unshift(last_card)
-        this.setState({ current_player_memes : my_hand })
-      }, 1000);
-       */
+      this.setState({ cards: my_hand });
     }
   }, {
     key: 'rightButtonClicked',
     value: function rightButtonClicked() {
-      var _this3 = this;
-
-      var my_hand = this.state.current_player_memes;
+      var my_hand = this.state.cards;
       var first_card = my_hand[0];
 
-      /*do animations
-         */
-
-      //shift occurs here
-
-      setTimeout(function () {
-        my_hand.shift();
-        my_hand.push(first_card);
-        _this3.setState({ current_player_memes: my_hand });
-      }, 1000);
+      //TODO: Smooth Card Animations
+      my_hand.shift();
+      my_hand.push(first_card);
+      this.setState({ cards: my_hand });
     }
   }, {
     key: 'sendMessage',
@@ -37342,7 +37289,7 @@ var Game = function (_Component) {
   }, {
     key: 'memeSelected',
     value: function memeSelected(meme_id) {
-      var _this4 = this;
+      var _this3 = this;
 
       var captions = document.getElementsByClassName("captionInstructions");
       captions[0].style.display = "None";
@@ -37361,7 +37308,7 @@ var Game = function (_Component) {
       _axios2.default.get(caption_image_url).then(function (response) {
 
         console.log("response.data", response.data.data);
-        _this4.setState({ captioned_img_url: response.data.data.url });
+        _this3.setState({ captioned_img_url: response.data.data.url });
       }).catch(function (error) {
         console.log(error);
       });
@@ -37400,12 +37347,28 @@ var Game = function (_Component) {
   }, {
     key: 'selectRoundWinner',
     value: function selectRoundWinner() {
+      this.setState({
+        roundNumber: roundNumber + 1,
+        enteredName: false,
+        nickname: '',
+        room_id: '',
+        cards: [],
+        current_players: [],
+        captioned_img_url: '',
+        top_caption: 'Take her on a date to taco bell',
+        bottom_caption: 'Make her pay',
+        isDealer: true,
+        submitted_memes: [],
+        didSubmit: false
+      });
+
+      this.props.socket.emit('new_round');
       console.log("You selected a winner!");
     }
   }, {
     key: 'generateMeme',
     value: function generateMeme(meme_data, position) {
-      var _this5 = this;
+      var _this4 = this;
 
       var meme_id = meme_data.id;
       var meme_data_url = meme_data.url.toString();
@@ -37414,7 +37377,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition1', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this5.memeSelected(meme_id);
+              return _this4.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37422,7 +37385,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition2', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this5.memeSelected(meme_id);
+              return _this4.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37430,7 +37393,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition3', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this5.memeSelected(meme_id);
+              return _this4.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37438,7 +37401,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, className: 'memeButtonNotVisible', onClick: function onClick() {
-              return _this5.memeSelected(meme_id);
+              return _this4.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeNotVisible', alt: 'n/a' })
         );
@@ -37458,12 +37421,12 @@ var Game = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this6 = this;
+      var _this5 = this;
 
       var memes_arr = [];
 
-      if (this.state.current_player_memes.length > 0) {
-        var memes = this.state.current_player_memes;
+      if (this.state.cards.length > 0) {
+        var memes = this.state.cards;
 
         console.log('memes', memes);
 
@@ -37480,13 +37443,16 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { className: 'submittedMemeButton', onClick: function onClick() {
-              return _this6.selectRoundWinner();
+              return _this5.selectRoundWinner();
             } },
           _react2.default.createElement('img', { src: meme_url, key: index, className: 'submittedMeme', alt: 'n/a' })
         );
       });
 
       var userForm = !this.state.nickname ? _react2.default.createElement(_index6.default, { entered_name: this.entered_name }) : undefined;
+
+      //<button onClick={this.toggle_dealer}>Toggle Dealer</button>  <button onClick={this.toggle_dealer}>Toggle Dealer</button>
+
 
       if (this.state.isDealer) {
         return _react2.default.createElement(
@@ -37499,11 +37465,6 @@ var Game = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'dealerContentTopContainer' },
-              _react2.default.createElement(
-                'button',
-                { onClick: this.toggle_dealer },
-                'Toggle Dealer'
-              ),
               _react2.default.createElement(
                 'div',
                 { className: 'dealerInputDiv' },
@@ -37584,11 +37545,6 @@ var Game = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'contentContainer' },
-            _react2.default.createElement(
-              'button',
-              { onClick: this.toggle_dealer },
-              'Toggle Dealer'
-            ),
             _react2.default.createElement(
               'div',
               { className: 'gameTopContainer' },

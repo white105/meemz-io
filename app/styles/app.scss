@@ -60,10 +60,10 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
   width: 50%;
+  height: 20rem;
   margin: auto;
-  height: 30vh;
-  border: 4px solid white;
 }
 
 .dealerSubmitVersion {
@@ -178,9 +178,9 @@ hr {
   flex-direction: row;
   position: relative;
   width: 80%;
-  height: 50%;
+  height: 55%;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 3rem;
   border-radius: .5rem;
   border: 1px solid white;
 }
@@ -225,7 +225,6 @@ hr {
   height: 2rem;
   outline: none;
   margin: auto;
-  margin-top: 2rem;
   font-size: 1rem;
   border-radius: .5rem;
   background: #d25d92;

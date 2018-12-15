@@ -296,7 +296,8 @@ hr {
   flex: 1;
   position: relative;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  margin-top: 2rem; }
   .submitMemeButtonContainer .submitMemeButton {
     display: block;
     width: 15rem;
@@ -316,10 +317,10 @@ hr {
 
 .dealerCaptionedMeme {
   display: block;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   border: 3px solid #d25d92;
   border-radius: .5rem; }
 
@@ -601,10 +602,10 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
   width: 50%;
-  margin: auto;
-  height: 30vh;
-  border: 4px solid white; }
+  height: 20rem;
+  margin: auto; }
 
 .dealerSubmitVersion {
   height: 20rem;
@@ -700,9 +701,9 @@ hr {
   flex-direction: row;
   position: relative;
   width: 80%;
-  height: 50%;
+  height: 55%;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 3rem;
   border-radius: .5rem;
   border: 1px solid white; }
 
@@ -740,7 +741,6 @@ hr {
   height: 2rem;
   outline: none;
   margin: auto;
-  margin-top: 2rem;
   font-size: 1rem;
   border-radius: .5rem;
   background: #d25d92;

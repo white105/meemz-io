@@ -18,14 +18,15 @@ class Game extends Component {
       enteredName: false,
       nickname: '',
       room_id: '',
-      current_player_memes: [],
+      cards: [],
       current_players: [],
       captioned_img_url: '',
       top_caption: 'Take her on a date to taco bell',
       bottom_caption: 'Make her pay',
-      isDealer: true,
+      isDealer: false,
       submitted_memes: [],
-      didSubmit: false
+      didSubmit: false,
+      roundNumber: 1
     }
 
     this.memeService = new MemeService()
@@ -46,6 +47,22 @@ class Game extends Component {
 
   componentDidMount() {
 
+    this.props.socket.on('dealer', bool => {
+      console.log("We got that dealer bool", bool)
+
+      if (bool) {
+        this.setState({ isDealer : bool })
+        axios.get('https://api.imgflip.com/get_memes')
+          .then((response) => {
+          let memes = response.data.data.memes
+          this.props.socket.emit('deal', memes)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+    })
+
     //console.log("document.cookie", document.cookie)
 
     //var cookies = document.cookie.split(';');
@@ -61,6 +78,7 @@ class Game extends Component {
     }
 
     this.props.socket.emit("room", connection);
+
 
     if (!!nickname) {
       this.setState({ nickname : nickname })
@@ -79,70 +97,17 @@ class Game extends Component {
       this.props.socket.emit("room", connection);
     }
 
-
-    if (cookies[i].includes('nickname')) {
-      var cookie_parts = cookies[i].split("=")
-      console.log("cookie_parts", cookie_parts)
-      this.setState({ nickname : String(cookie_parts[1]) })
-      console.log('this.state.nickname', this.state.nickname)
-
-    } else if (cookies[i].includes('room_id')) {
-      var cookie_parts = cookies[i].split("=")
-      var cookie_room_id = cookie[i]
-      if (room_id != cookie_room_id) {
-        console.log("room id != cookie id")
-        var date = new Date();
-        date.setTime(date.getTime());
-        var expires = "; expires="+date.toGMTString();
-        cookies[i].concat(expires);
-      }
-      //this.setState({ room_id : String(cookie_parts[1]) })
-      console.log('this.state.room_id', cookie_parts[1])
-    }
     */
 
-    /*
-    var open_userForm = false
-    if (cookies.length > 0) {
-      for (var i=0; i<cookies.length; i++) {
-        if (cookies[i].includes('room_id')) {
-          console.log("room id != cookie id")
-          var cookie_parts = cookies[i].split("=")
-          var cookie_room_id = cookie[i]
-          if (cookie_room_id ! room_id) {
-            var date = new Date();
-            date.setTime(date.getTime());
-            var expires = "; expires="+date.toGMTString();
-            cookies[i].concat(expires);
-          } else {
-            console.log("else")
-          }
-        }
-        console.log('this.state.room_id', cookie_parts[1])
-      }
-    }
-    */
-
-
-
-    axios.get('https://api.imgflip.com/get_memes')
-      .then((response) => {
-      let memes = response.data.data.memes
-      this.props.socket.emit('memes_recieved_event', memes)
-      //this.setState({ current_player_memes : memes })
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 
     this.props.socket.on('submitted_meme_url', meme_url => {
       this.setState({ submitted_memes : [meme_url, ...this.state.submitted_memes] })
     })
 
 
-    this.props.socket.on('current_player_memes', memes => {
+    this.props.socket.on('cards', cards => {
       this.setState({
-        current_player_memes : memes
+        cards : cards
       })
     })
   }
@@ -151,48 +116,23 @@ class Game extends Component {
 
 
   leftButtonClicked() {
-    let my_hand = this.state.current_player_memes
+    let my_hand = this.state.cards
     let last_card = my_hand[my_hand.length-1]
 
-    /*do animations
-
-
-
-    */
-
+    //TODO: Smooth Card Animations
     my_hand.splice(my_hand.length-1, 1)
     my_hand.unshift(last_card)
-    this.setState({ current_player_memes : my_hand })
-
-    /*
-    setTimeout(() => {
-      my_hand.splice(my_hand.length-1, 1)
-      my_hand.unshift(last_card)
-      this.setState({ current_player_memes : my_hand })
-    }, 1000);
-
-    */
-
-
+    this.setState({ cards : my_hand })
   }
 
   rightButtonClicked() {
-    let my_hand = this.state.current_player_memes
+    let my_hand = this.state.cards
     let first_card = my_hand[0]
 
-    /*do animations
-
-
-
-    */
-
-    //shift occurs here
-
-    setTimeout(() => {
-      my_hand.shift()
-      my_hand.push(first_card)
-      this.setState({ current_player_memes : my_hand })
-    }, 1000);
+    //TODO: Smooth Card Animations
+    my_hand.shift()
+    my_hand.push(first_card)
+    this.setState({ cards : my_hand })
   }
 
   sendMessage() {
@@ -267,6 +207,23 @@ class Game extends Component {
   }
 
   selectRoundWinner() {
+    this.setState({
+      roundNumber : roundNumber + 1,
+      enteredName: false,
+      nickname: '',
+      room_id: '',
+      cards: [],
+      current_players: [],
+      captioned_img_url: '',
+      top_caption: 'Take her on a date to taco bell',
+      bottom_caption: 'Make her pay',
+      isDealer: true,
+      submitted_memes: [],
+      didSubmit: false,
+    })
+
+
+    this.props.socket.emit('new_round')
     console.log("You selected a winner!")
   }
 
@@ -298,8 +255,8 @@ class Game extends Component {
 
     let memes_arr = []
 
-    if (this.state.current_player_memes.length > 0) {
-      let memes = this.state.current_player_memes
+    if (this.state.cards.length > 0) {
+      let memes = this.state.cards
 
       console.log('memes', memes)
 
@@ -318,6 +275,8 @@ class Game extends Component {
 
     let userForm = (!this.state.nickname) ? <UserFormWithSocket entered_name={this.entered_name}></UserFormWithSocket> : undefined
 
+    //<button onClick={this.toggle_dealer}>Toggle Dealer</button>  <button onClick={this.toggle_dealer}>Toggle Dealer</button>
+
 
     if (this.state.isDealer) {
       return (
@@ -329,7 +288,6 @@ class Game extends Component {
 
           <div className='dealerContentTopContainer'>
 
-            <button onClick={this.toggle_dealer}>Toggle Dealer</button>
             <div className='dealerInputDiv'>
 
               <div className='topCaptionContainer'>
@@ -382,8 +340,6 @@ class Game extends Component {
         {userForm}
 
         <div className='contentContainer'>
-
-        <button onClick={this.toggle_dealer}>Toggle Dealer</button>
 
           <div className='gameTopContainer'>
 
