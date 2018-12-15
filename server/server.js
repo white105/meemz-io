@@ -5,8 +5,9 @@ var express       = require('express'),
     fs            = require('fs'),
     cors          = require('cors'),
     bodyParser    = require('body-parser'),
-    socketIo = require("socket.io"),
-    indexRoutes   = require('./routes/index');
+    socketIo      = require("socket.io"),
+    indexRoutes   = require('./routes/index'),
+    axios         = require('axios');
 
 const app = express();
 const server = http.createServer(app);
@@ -38,6 +39,17 @@ app.use(function(req, res, next) {
 
 var numUsers = 0;
 
+var memes = undefined
+
+axios.get('https://api.imgflip.com/get_memes')
+  .then((response) => {
+    memes = response.data.data.memes;
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+
 io.on('connection', socket => {
   var addedUser = false;
 
@@ -65,9 +77,7 @@ io.on('connection', socket => {
 
       for (var client in clients) {
         if (clients.hasOwnProperty(client)) {
-          if (client == winner) {
-            io.to(`${String(client)}`).emit('win', 'You won!');
-          }
+          io.to(`${String(client)}`).emit('win', winner);
         }
       }
     });
@@ -90,44 +100,37 @@ io.on('connection', socket => {
     console.log("This is the dealer!", dealer)
     io.to(`${dealer}`).emit('dealer', true);
 
+    console.log("deal event happened")
 
+    let collection = memes
 
-    socket.on('deal', (memes) => {
+    num_memes = collection.length;
 
-      console.log("deal event happened")
+    var numPlayers = Object.keys(clients).length;
 
-      let collection = memes
+    memes_per_user = (numPlayers > 0) ? (num_memes / numPlayers-1) : 8
 
-      num_memes = collection.length;
+    var random_nums = []
+    var random_int = Math.floor(Math.random() * memes.length);
 
-      var numPlayers = Object.keys(clients).length;
+    //loops through everyone in room
+    for (var client in clients) {
+      var player_cards = []
+      if (clients.hasOwnProperty(client)) {
 
-      memes_per_user = (numPlayers > 0) ? (num_memes / numPlayers-1) : 8
-
-      var random_nums = []
-      var random_int = Math.floor(Math.random() * memes.length);
-
-      //loops through everyone in room
-      for (var client in clients) {
-        var player_cards = []
-        if (clients.hasOwnProperty(client)) {
-
-          //if client is player send them cards
-          if (client != dealer) {
-            for (var i=0; i<memes_per_user; i++) {
-              random_int = Math.floor(Math.random() * collection.length);
-              //makes sure random int isn't a duplicate
-              while (random_nums.includes(random_int)) { random_int = Math.floor(Math.random() * collection.length) }
-              random_nums.push(random_int)
-              player_cards.push(collection[random_int])
-            }
-            io.to(`${String(client)}`).emit('cards', player_cards);
+        //if client is player send them cards
+        if (client != dealer) {
+          for (var i=0; i<memes_per_user; i++) {
+            random_int = Math.floor(Math.random() * collection.length);
+            //makes sure random int isn't a duplicate
+            while (random_nums.includes(random_int)) { random_int = Math.floor(Math.random() * collection.length) }
+            random_nums.push(random_int)
+            player_cards.push(collection[random_int])
           }
+          io.to(`${String(client)}`).emit('cards', player_cards);
         }
       }
-
-    });
-
+    }
 
   });
 
@@ -269,6 +272,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-//server.listen(3000)
+server.listen(3000)
 
-server.listen(process.env.PORT || 5000)
+//server.listen(process.env.PORT || 5000)

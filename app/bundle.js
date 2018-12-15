@@ -2908,7 +2908,7 @@ var MemeService = function () {
 
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -2920,7 +2920,7 @@ var MemeService = function () {
       //pretty much done
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -37205,14 +37205,16 @@ var Game = function (_Component) {
 
     _this.toggle_dealer = _this.toggle_dealer.bind(_this);
     _this.entered_name = _this.entered_name.bind(_this);
+    _this.importantCode = _this.importantCode.bind(_this);
     return _this;
   }
 
   _createClass(Game, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'importantCode',
+    value: function importantCode() {
       var _this2 = this;
 
+      this.setState(defaultState);
       var urlArray = window.location.href.split("/");
       var room_id = String(urlArray[urlArray.length - 1]);
       var nickname = localStorage.getItem("nickname" + room_id);
@@ -37237,22 +37239,7 @@ var Game = function (_Component) {
       }
 
       this.props.socket.on('dealer', function (bool) {
-        console.log("We got that dealer bool", bool);
-
-        if (bool) {
-          _this2.setState({ isDealer: bool });
-          _axios2.default.get('https://api.imgflip.com/get_memes').then(function (response) {
-            var memes = response.data.data.memes;
-            _this2.props.socket.emit('deal', memes);
-          }).catch(function (error) {
-            console.log(error);
-          });
-        }
-      });
-
-      this.props.socket.on('win', function (alert_message) {
-        alert(alert_message);
-        _this2.forceUpdate();
+        _this2.setState({ isDealer: bool });
       });
 
       this.props.socket.on('meme_submission', function (meme_submission) {
@@ -37276,6 +37263,22 @@ var Game = function (_Component) {
         _this2.setState({
           cards: cards
         });
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      this.importantCode();
+
+      this.props.socket.on('win', function (client_id) {
+        if (_this3.state.client_id === client_id) {
+          alert("You won!");
+        } else {
+          alert("You lost!");
+        }
+        _this3.importantCode();
       });
     }
   }, {
@@ -37318,7 +37321,7 @@ var Game = function (_Component) {
   }, {
     key: 'memeSelected',
     value: function memeSelected(meme_id) {
-      var _this3 = this;
+      var _this4 = this;
 
       var captions = document.getElementsByClassName("captionInstructions");
       captions[0].style.display = "None";
@@ -37337,7 +37340,7 @@ var Game = function (_Component) {
       _axios2.default.get(caption_image_url).then(function (response) {
 
         console.log("response.data", response.data.data);
-        _this3.setState({ captioned_img_url: response.data.data.url });
+        _this4.setState({ captioned_img_url: response.data.data.url });
       }).catch(function (error) {
         console.log(error);
       });
@@ -37391,7 +37394,7 @@ var Game = function (_Component) {
   }, {
     key: 'generateMeme',
     value: function generateMeme(meme_data, position) {
-      var _this4 = this;
+      var _this5 = this;
 
       var meme_id = meme_data.id;
       var meme_data_url = meme_data.url.toString();
@@ -37400,7 +37403,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition1', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this4.memeSelected(meme_id);
+              return _this5.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37408,7 +37411,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition2', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this4.memeSelected(meme_id);
+              return _this5.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37416,7 +37419,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, id: 'memePosition3', className: 'memeButtonIsVisible', onClick: function onClick() {
-              return _this4.memeSelected(meme_id);
+              return _this5.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeIsVisible', alt: 'n/a' })
         );
@@ -37424,7 +37427,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { key: meme_id, className: 'memeButtonNotVisible', onClick: function onClick() {
-              return _this4.memeSelected(meme_id);
+              return _this5.memeSelected(meme_id);
             } },
           _react2.default.createElement('img', { src: meme_data_url, className: 'memeNotVisible', alt: 'n/a' })
         );
@@ -37444,7 +37447,7 @@ var Game = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       var memes_arr = [];
 
@@ -37464,7 +37467,7 @@ var Game = function (_Component) {
         return _react2.default.createElement(
           'button',
           { className: 'submittedMemeButton', onClick: function onClick() {
-              return _this5.selectRoundWinner(meme_submission.client_id);
+              return _this6.selectRoundWinner(meme_submission.client_id);
             } },
           _react2.default.createElement('img', { src: meme_submission.captioned_meme, key: index, className: 'submittedMeme', alt: 'n/a' })
         );

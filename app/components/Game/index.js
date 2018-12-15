@@ -61,10 +61,12 @@ class Game extends Component {
 
     this.toggle_dealer = this.toggle_dealer.bind(this)
     this.entered_name = this.entered_name.bind(this)
+    this.importantCode = this.importantCode.bind(this)
   }
 
-  componentDidMount() {
+  importantCode() {
 
+    this.setState(defaultState)
     var urlArray = window.location.href.split("/");
     var room_id = String(urlArray[urlArray.length - 1])
     const nickname = localStorage.getItem("nickname" + room_id)
@@ -89,28 +91,7 @@ class Game extends Component {
       this.setState({ nickname : nickname })
     }
 
-
-    this.props.socket.on('dealer', bool => {
-      console.log("We got that dealer bool", bool)
-
-      if (bool) {
-        this.setState({ isDealer : bool })
-        axios.get('https://api.imgflip.com/get_memes')
-          .then((response) => {
-          let memes = response.data.data.memes
-          this.props.socket.emit('deal', memes)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }
-    })
-
-    this.props.socket.on('win', (alert_message) => {
-      alert(alert_message)
-      this.forceUpdate()
-    })
-
+    this.props.socket.on('dealer', bool => { this.setState({ isDealer : bool }) })
 
     this.props.socket.on('meme_submission', meme_submission => {
 
@@ -137,6 +118,21 @@ class Game extends Component {
       this.setState({
         cards : cards
       })
+    })
+  }
+
+  componentDidMount() {
+
+    this.importantCode();
+
+
+    this.props.socket.on('win', (client_id) => {
+      if (this.state.client_id === client_id) {
+        alert("You won!")
+      } else {
+        alert("You lost!")
+      }
+      this.importantCode();
     })
   }
 
