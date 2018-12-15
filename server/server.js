@@ -17,6 +17,8 @@ app.engine('html', function (path, options, callbacks) {
   fs.readFile(path, 'utf-8', callback);
 });
 
+
+//this.setState({ nickname : String(cookie_parts[1]) }, () => { console.log(this.state.nickname) })
 app.use(express.static(path.join(__dirname, '../app')));
 
 app.use(cors());
@@ -45,21 +47,23 @@ io.on('connection', socket => {
 
     console.log("connection", connection)
 
-    console.log("i am in da room!", connection.id)
-    socket.join(connection.id);
-    socket.room = connection.id;
+    console.log("i am in da room!", connection.nickname)
+    socket.join(connection.room_id);
+    socket.room = connection.room_id;
     socket.nickname = connection.nickname;
-    socket.in(connection.id).emit("new_joiner", connection.nickname);
+    socket.in(connection.room_id).emit("new_joiner", connection.nickname);
   });
 
+  socket.on("message", msg => {
+    console.log("msg", msg)
 
-  socket.on('message', message => {
-    console.log(message)
-    socket.in(message.id).broadcast.emit('message', {
-      body: message.body,
-      from: message.from
-    })
-  })
+    console.log('socket.nickname', socket.nickname)
+    console.log('msg.body', msg.body)
+    socket.in(socket.room).emit("message", {
+      from: socket.nickname,
+      body: msg.body
+    });
+  });
 
   socket.on('memes_recieved_event', (memes) => {
 

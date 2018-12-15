@@ -46,26 +46,29 @@ class Game extends Component {
 
   componentDidMount() {
 
-    console.log("document.cookie", document.cookie)
+    //console.log("document.cookie", document.cookie)
 
-    var cookies = document.cookie.split(';');
+    //var cookies = document.cookie.split(';');
 
-    if (cookies.length > 0) {
-      for (var i=0; i<cookies.length; i++) {
-        if (cookies[i].includes('nickname')) {
-          var cookie_parts = cookies[i].split("=")
-          console.log("cookie_parts", cookie_parts)
-          this.setState({ nickname : String(cookie_parts[1]) })
-          console.log('this.state.nickname', this.state.nickname)
+    var urlArray = window.location.href.split("/");
+    var room_id = String(urlArray[urlArray.length - 1])
 
-        } else if (cookies[i].includes('room_id')) {
-          var cookie_parts = cookies[i].split("=")
-          console.log("cookie_parts", cookie_parts)
-          this.setState({ room_id : String(cookie_parts[1]) })
-          console.log('this.state.room_id', cookie_parts[1])
-        }
-      }
+    const nickname = localStorage.getItem("nickname" + room_id)
+
+    var connection = {
+      room_id: room_id,
+      nickname: nickname
     }
+
+    this.props.socket.emit("room", connection);
+
+    console.log("localStorage nickname", nickname)
+
+    if (!!nickname) {
+      this.setState({ nickname : nickname })
+    }
+
+    /*
 
     if (this.state.nickname != '' && this.state.room_id != '') {
 
@@ -77,6 +80,52 @@ class Game extends Component {
 
       this.props.socket.emit("room", connection);
     }
+
+
+    if (cookies[i].includes('nickname')) {
+      var cookie_parts = cookies[i].split("=")
+      console.log("cookie_parts", cookie_parts)
+      this.setState({ nickname : String(cookie_parts[1]) })
+      console.log('this.state.nickname', this.state.nickname)
+
+    } else if (cookies[i].includes('room_id')) {
+      var cookie_parts = cookies[i].split("=")
+      var cookie_room_id = cookie[i]
+      if (room_id != cookie_room_id) {
+        console.log("room id != cookie id")
+        var date = new Date();
+        date.setTime(date.getTime());
+        var expires = "; expires="+date.toGMTString();
+        cookies[i].concat(expires);
+      }
+      //this.setState({ room_id : String(cookie_parts[1]) })
+      console.log('this.state.room_id', cookie_parts[1])
+    }
+    */
+
+    /*
+    var open_userForm = false
+    if (cookies.length > 0) {
+      for (var i=0; i<cookies.length; i++) {
+        if (cookies[i].includes('room_id')) {
+          console.log("room id != cookie id")
+          var cookie_parts = cookies[i].split("=")
+          var cookie_room_id = cookie[i]
+          if (cookie_room_id ! room_id) {
+            var date = new Date();
+            date.setTime(date.getTime());
+            var expires = "; expires="+date.toGMTString();
+            cookies[i].concat(expires);
+          } else {
+            console.log("else")
+          }
+        }
+        console.log('this.state.room_id', cookie_parts[1])
+      }
+    }
+    */
+
+
 
     axios.get('https://api.imgflip.com/get_memes')
       .then((response) => {
@@ -242,8 +291,9 @@ class Game extends Component {
     this.setState({ isDealer: !this.state.isDealer})
   }
 
-  entered_name() {
-    this.setState({ enteredName : true })
+  entered_name(nickname) {
+    console.log("entered_name", nickname)
+    this.setState({ nickname : nickname })
   }
 
     render() {
@@ -267,7 +317,8 @@ class Game extends Component {
       return <button className='submittedMemeButton' onClick={() => this.selectRoundWinner()}><img src={meme_url} key={index} className='submittedMeme' alt='n/a'/></button>
     })
 
-    let userForm = (this.state.nickname == '') ? <UserFormWithSocket entered_name={this.entered_name}></UserFormWithSocket> : undefined
+
+    let userForm = (!this.state.nickname) ? <UserFormWithSocket entered_name={this.entered_name}></UserFormWithSocket> : undefined
 
 
     if (this.state.isDealer) {

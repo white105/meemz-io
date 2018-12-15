@@ -42,31 +42,13 @@ class UserForm extends Component {
     var nickname_set = false;
     var room_id_set = false;
 
-    if (cookies.length > 0) {
-      for (var i=0; i<cookies.length; i++) {
-        if (cookies[i].includes('nickname')) {
-          nickname_set = true
-        } else if (cookies[i].includes('room_id')) {
-          room_id_set = true
-        }
-      }
-    }
-
-    if (!nickname_set) {
-      document.cookie = `nickname=${nickname}`
-    }
-
-    if (room_id_set) {
-      document.cookie = `room_id=${room_id}`
-    }
+    localStorage.setItem(`nickname${room_id}`, nickname);
 
     this.props.socket.on('add user', user => {
       this.setState({ messages : [message, ...this.state.messages] })
     })
 
-    this.props.entered_name()
-
-    this.MemeService.nameEntered()
+    this.props.entered_name(nickname)
   }
 
   render() {

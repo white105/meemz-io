@@ -7671,31 +7671,13 @@ var UserForm = function (_Component) {
       var nickname_set = false;
       var room_id_set = false;
 
-      if (cookies.length > 0) {
-        for (var i = 0; i < cookies.length; i++) {
-          if (cookies[i].includes('nickname')) {
-            nickname_set = true;
-          } else if (cookies[i].includes('room_id')) {
-            room_id_set = true;
-          }
-        }
-      }
-
-      if (!nickname_set) {
-        document.cookie = 'nickname=' + nickname;
-      }
-
-      if (room_id_set) {
-        document.cookie = 'room_id=' + room_id;
-      }
+      localStorage.setItem('nickname' + room_id, nickname);
 
       this.props.socket.on('add user', function (user) {
         _this2.setState({ messages: [message].concat(_toConsumableArray(_this2.state.messages)) });
       });
 
-      this.props.entered_name();
-
-      this.MemeService.nameEntered();
+      this.props.entered_name(nickname);
     }
   }, {
     key: 'render',
@@ -37211,36 +37193,78 @@ var Game = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log("document.cookie", document.cookie);
+      //console.log("document.cookie", document.cookie)
 
-      var cookies = document.cookie.split(';');
+      //var cookies = document.cookie.split(';');
 
-      if (cookies.length > 0) {
-        for (var i = 0; i < cookies.length; i++) {
-          if (cookies[i].includes('nickname')) {
-            var cookie_parts = cookies[i].split("=");
-            console.log("cookie_parts", cookie_parts);
-            this.setState({ nickname: String(cookie_parts[1]) });
-            console.log('this.state.nickname', this.state.nickname);
-          } else if (cookies[i].includes('room_id')) {
-            var cookie_parts = cookies[i].split("=");
-            console.log("cookie_parts", cookie_parts);
-            this.setState({ room_id: String(cookie_parts[1]) });
-            console.log('this.state.room_id', cookie_parts[1]);
-          }
-        }
+      var urlArray = window.location.href.split("/");
+      var room_id = String(urlArray[urlArray.length - 1]);
+
+      var nickname = localStorage.getItem("nickname" + room_id);
+
+      var connection = {
+        room_id: room_id,
+        nickname: nickname
+      };
+
+      this.props.socket.emit("room", connection);
+
+      console.log("localStorage nickname", nickname);
+
+      if (!!nickname) {
+        this.setState({ nickname: nickname });
       }
 
-      if (this.state.nickname != '' && this.state.room_id != '') {
-
-        console.log("we here");
+      /*
+       if (this.state.nickname != '' && this.state.room_id != '') {
+         console.log("we here")
         var connection = {
           room_id: this.state.room_id,
           nickname: this.state.nickname
-        };
-
-        this.props.socket.emit("room", connection);
+        }
+         this.props.socket.emit("room", connection);
       }
+        if (cookies[i].includes('nickname')) {
+        var cookie_parts = cookies[i].split("=")
+        console.log("cookie_parts", cookie_parts)
+        this.setState({ nickname : String(cookie_parts[1]) })
+        console.log('this.state.nickname', this.state.nickname)
+       } else if (cookies[i].includes('room_id')) {
+        var cookie_parts = cookies[i].split("=")
+        var cookie_room_id = cookie[i]
+        if (room_id != cookie_room_id) {
+          console.log("room id != cookie id")
+          var date = new Date();
+          date.setTime(date.getTime());
+          var expires = "; expires="+date.toGMTString();
+          cookies[i].concat(expires);
+        }
+        //this.setState({ room_id : String(cookie_parts[1]) })
+        console.log('this.state.room_id', cookie_parts[1])
+      }
+      */
+
+      /*
+      var open_userForm = false
+      if (cookies.length > 0) {
+        for (var i=0; i<cookies.length; i++) {
+          if (cookies[i].includes('room_id')) {
+            console.log("room id != cookie id")
+            var cookie_parts = cookies[i].split("=")
+            var cookie_room_id = cookie[i]
+            if (cookie_room_id ! room_id) {
+              var date = new Date();
+              date.setTime(date.getTime());
+              var expires = "; expires="+date.toGMTString();
+              cookies[i].concat(expires);
+            } else {
+              console.log("else")
+            }
+          }
+          console.log('this.state.room_id', cookie_parts[1])
+        }
+      }
+      */
 
       _axios2.default.get('https://api.imgflip.com/get_memes').then(function (response) {
         var memes = response.data.data.memes;
@@ -37427,8 +37451,9 @@ var Game = function (_Component) {
     }
   }, {
     key: 'entered_name',
-    value: function entered_name() {
-      this.setState({ enteredName: true });
+    value: function entered_name(nickname) {
+      console.log("entered_name", nickname);
+      this.setState({ nickname: nickname });
     }
   }, {
     key: 'render',
@@ -37461,7 +37486,7 @@ var Game = function (_Component) {
         );
       });
 
-      var userForm = this.state.nickname == '' ? _react2.default.createElement(_index6.default, { entered_name: this.entered_name }) : undefined;
+      var userForm = !this.state.nickname ? _react2.default.createElement(_index6.default, { entered_name: this.entered_name }) : undefined;
 
       if (this.state.isDealer) {
         return _react2.default.createElement(
@@ -38090,7 +38115,7 @@ exports.default = LeaderBoards;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -38148,6 +38173,8 @@ var Messages = function (_Component) {
       var _this2 = this;
 
       this.props.socket.on('message', function (message) {
+        console.log("got a message!", message);
+        console.log("this.state.messages");
         _this2.setState({ messages: [message].concat(_toConsumableArray(_this2.state.messages)) });
       });
     }
@@ -38159,15 +38186,23 @@ var Messages = function (_Component) {
       var urlArray = window.location.href.split("/");
       var gameId = String(urlArray[urlArray.length - 1]);
 
+      var nickname = localStorage.getItem("nickname" + gameId);
+
       if (body != '') {
-        var message = {
+        var send_message = {
           body: body,
-          from: 'Me',
+          from: nickname,
           room_id: gameId
         };
 
-        this.setState({ messages: [message].concat(_toConsumableArray(this.state.messages)), current_message: '' });
-        this.props.socket.emit('message', message);
+        var receive_message = {
+          body: body,
+          from: "Me",
+          room_id: gameId
+        };
+
+        this.setState({ messages: [receive_message].concat(_toConsumableArray(this.state.messages)), current_message: '' });
+        this.props.socket.emit('message', send_message);
       }
     }
   }, {
@@ -38261,6 +38296,7 @@ var MessagesWithSocket = function MessagesWithSocket(props) {
 };
 
 exports.default = MessagesWithSocket;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 134 */

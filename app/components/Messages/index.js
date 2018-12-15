@@ -19,6 +19,8 @@ class Messages extends Component {
   componentDidMount() {
 
     this.props.socket.on('message', message => {
+      console.log("got a message!", message)
+      console.log("this.state.messages")
       this.setState({ messages : [message, ...this.state.messages] })
     })
 
@@ -30,15 +32,23 @@ class Messages extends Component {
     var urlArray = window.location.href.split("/");
     var gameId = String(urlArray[urlArray.length - 1])
 
+    const nickname = localStorage.getItem("nickname" + gameId)
+
     if (body != '') {
-      const message = {
+      const send_message = {
         body: body,
-        from: 'Me',
+        from: nickname,
         room_id: gameId
       }
 
-      this.setState({ messages : [message, ...this.state.messages], current_message: ''})
-      this.props.socket.emit('message', message)
+      const receive_message = {
+        body: body,
+        from: "Me",
+        room_id: gameId
+      }
+
+      this.setState({ messages : [receive_message, ...this.state.messages], current_message: ''})
+      this.props.socket.emit('message', send_message)
     }
   }
 
