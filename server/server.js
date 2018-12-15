@@ -41,17 +41,38 @@ var numUsers = 0;
 io.on('connection', socket => {
   var addedUser = false;
 
-  /*
-
-  socket.on('get_', meme_url => {
-    console.log("server submit", meme_url)
-    socket.in(socket.room).emit('submitted_meme_url', meme_url);
-    //socket.broadcast.emit('submitted_meme_url', meme_url)
-  });
-
-  */
-
   socket.on("room", connection => {
+
+    console.log("connection to room", connection)
+
+    socket.join(connection.room_id);
+    socket.room = connection.room_id;
+    socket.nickname = connection.nickname;
+    connection.id = socket.id;
+
+    io.to(`${String(connection.id)}`).emit('client_id', connection.id);
+
+    console.log("client id", socket.id)
+
+    //list of clients in specific game room
+    var clients = io.sockets.adapter.rooms[socket.room].sockets;
+
+    socket.on("winner", winner_client_id => {
+
+      console.log("this is the winner", winner_client_id)
+
+      var winner = winner_client_id
+
+      for (var client in clients) {
+        if (clients.hasOwnProperty(client)) {
+          if (client == winner) {
+            io.to(`${String(client)}`).emit('win', 'You won!');
+          }
+        }
+      }
+    });
+
+
 
     /* might wanna leave room
     if(socket.room)
@@ -61,20 +82,15 @@ io.on('connection', socket => {
     socket.join(room);
     */
 
-    console.log("connection", connection)
 
-    socket.join(connection.room_id);
-    socket.room = connection.room_id;
-    socket.nickname = connection.nickname;
     socket.in(connection.room_id).emit("new_joiner", connection.nickname);
-
-    //list of clients in specific game room
-    var clients = io.sockets.adapter.rooms[socket.room].sockets;
 
     //TODO: logic to pick dealer / players (needs work)
     var dealer = String(Object.keys(clients)[0]);
     console.log("This is the dealer!", dealer)
     io.to(`${dealer}`).emit('dealer', true);
+
+
 
     socket.on('deal', (memes) => {
 
@@ -83,9 +99,6 @@ io.on('connection', socket => {
       let collection = memes
 
       num_memes = collection.length;
-
-      //list of clients in specific game room
-      var clients = io.sockets.adapter.rooms[socket.room].sockets;
 
       var numPlayers = Object.keys(clients).length;
 
@@ -130,9 +143,24 @@ io.on('connection', socket => {
     });
   });
 
-  socket.on('submitted_meme_url', meme_url => {
-    console.log("server submit", meme_url)
-    socket.in(socket.room).emit('submitted_meme_url', meme_url);
+
+  socket.on('meme_submission', meme_submission => {
+
+    /*
+    var meme_submission = {
+      captioned_meme : captioned_image_url,
+      nickname: this.state.nickname
+    }
+    */
+
+    console.log("server submit", meme_submission)
+
+    console.log('captioned_meme', meme_submission.captioned_meme)
+    console.log('nickname', meme_submission.nickname)
+
+
+
+    socket.in(socket.room).emit('meme_submission', meme_submission);
     //socket.broadcast.emit('submitted_meme_url', meme_url)
   });
 

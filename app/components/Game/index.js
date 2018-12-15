@@ -18,6 +18,7 @@ class Game extends Component {
       enteredName: false,
       nickname: '',
       room_id: '',
+      client_id: '',
       cards: [],
       current_players: [],
       captioned_img_url: '',
@@ -47,6 +48,31 @@ class Game extends Component {
 
   componentDidMount() {
 
+    var urlArray = window.location.href.split("/");
+    var room_id = String(urlArray[urlArray.length - 1])
+    const nickname = localStorage.getItem("nickname" + room_id)
+
+    var connection = {
+      room_id: room_id,
+      nickname: nickname
+    }
+
+    this.props.socket.emit("room", connection);
+    this.props.socket.on('client_id', (client_id) => {
+
+      console.log("Getting client back from server", client_id)
+      //set client vars
+      this.setState({
+        client_id : client_id
+      })
+    })
+
+
+    if (!!nickname) {
+      this.setState({ nickname : nickname })
+    }
+
+
     this.props.socket.on('dealer', bool => {
       console.log("We got that dealer bool", bool)
 
@@ -63,45 +89,30 @@ class Game extends Component {
       }
     })
 
-    //console.log("document.cookie", document.cookie)
-
-    //var cookies = document.cookie.split(';');
-
-    var urlArray = window.location.href.split("/");
-    var room_id = String(urlArray[urlArray.length - 1])
-
-    const nickname = localStorage.getItem("nickname" + room_id)
-
-    var connection = {
-      room_id: room_id,
-      nickname: nickname
-    }
-
-    this.props.socket.emit("room", connection);
+    this.props.socket.on('win', (alert_message) => {
+      alert(alert_message)
+      location.reload();
+    })
 
 
-    if (!!nickname) {
-      this.setState({ nickname : nickname })
-    }
+    this.props.socket.on('meme_submission', meme_submission => {
 
-    /*
+      console.log("recieved da event", meme_submission)
+      /*
 
-    if (this.state.nickname != '' && this.state.room_id != '') {
+      structure of meme_submission
 
-      console.log("we here")
-      var connection = {
-        room_id: this.state.room_id,
-        nickname: this.state.nickname
+      var meme_submission = {
+        captioned_meme : captioned_image_url,
+        nickname: nickname,
+        client_id : client_id
       }
 
-      this.props.socket.emit("room", connection);
-    }
+      */
+      this.setState({ submitted_memes : [meme_submission, ...this.state.submitted_memes] })
 
-    */
-
-
-    this.props.socket.on('submitted_meme_url', meme_url => {
-      this.setState({ submitted_memes : [meme_url, ...this.state.submitted_memes] })
+      console.log("this.state.submitted_memes", this.state.submitted_memes)
+      console.log("typeof(this.state.submitted_memes)", typeof(this.state.submitted_memes))
     })
 
 
@@ -187,12 +198,23 @@ class Game extends Component {
   }
 
   submitMeme() {
+
+    //meme_id will allow us to pick a winner correctly
+
     if (!this.state.didSubmit) {
       let captioned_image_url = this.state.captioned_img_url
-      console.log("this.state.submitted_memes", this.state.submitted_memes)
+      var meme_submission = {
+        captioned_meme : captioned_image_url,
+        nickname: this.state.nickname,
+        client_id : this.state.client_id
+      }
+
+      console.log("meme_submission", meme_submission)
       this.setState({ submitted_memes : [captioned_image_url, ...this.state.submitted_memes] })
       console.log("this.state.submitted_memes", this.state.submitted_memes)
-      this.props.socket.emit('submitted_meme_url', captioned_image_url)
+
+
+      this.props.socket.emit('meme_submission', meme_submission)
       this.setState({ didSubmit : true })
     }
   }
@@ -206,7 +228,12 @@ class Game extends Component {
     }
   }
 
-  selectRoundWinner() {
+  selectRoundWinner(winner_client_id) {
+
+    console.log("You selected a winner!", winner_client_id)
+    this.props.socket.emit('winner', winner_client_id)
+
+
     this.setState({
       roundNumber : roundNumber + 1,
       enteredName: false,
@@ -221,10 +248,6 @@ class Game extends Component {
       submitted_memes: [],
       didSubmit: false,
     })
-
-
-    this.props.socket.emit('new_round')
-    console.log("You selected a winner!")
   }
 
   generateMeme(meme_data, position) {
@@ -258,8 +281,6 @@ class Game extends Component {
     if (this.state.cards.length > 0) {
       let memes = this.state.cards
 
-      console.log('memes', memes)
-
       for(var i=0; i<memes.length; i++) {
         memes_arr.push(this.generateMeme(memes[i], i))
       }
@@ -268,8 +289,8 @@ class Game extends Component {
     let allContent = (memes_arr.length > 0) ? memes_arr.map(function(meme) { return meme } ) : null
 
 
-    const submitted_memes = this.state.submitted_memes.map((meme_url, index) => {
-      return <button className='submittedMemeButton' onClick={() => this.selectRoundWinner()}><img src={meme_url} key={index} className='submittedMeme' alt='n/a'/></button>
+    const submitted_memes = this.state.submitted_memes.map((meme_submission, index) => {
+      return <button className='submittedMemeButton' onClick={() => this.selectRoundWinner(meme_submission.client_id)}><img src={meme_submission.captioned_meme} key={index} className='submittedMeme' alt='n/a'/></button>
     })
 
 

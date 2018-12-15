@@ -37098,6 +37098,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -37162,6 +37164,7 @@ var Game = function (_Component) {
       enteredName: false,
       nickname: '',
       room_id: '',
+      client_id: '',
       cards: [],
       current_players: [],
       captioned_img_url: '',
@@ -37194,6 +37197,29 @@ var Game = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      var urlArray = window.location.href.split("/");
+      var room_id = String(urlArray[urlArray.length - 1]);
+      var nickname = localStorage.getItem("nickname" + room_id);
+
+      var connection = {
+        room_id: room_id,
+        nickname: nickname
+      };
+
+      this.props.socket.emit("room", connection);
+      this.props.socket.on('client_id', function (client_id) {
+
+        console.log("Getting client back from server", client_id);
+        //set client vars
+        _this2.setState({
+          client_id: client_id
+        });
+      });
+
+      if (!!nickname) {
+        this.setState({ nickname: nickname });
+      }
+
       this.props.socket.on('dealer', function (bool) {
         console.log("We got that dealer bool", bool);
 
@@ -37208,39 +37234,27 @@ var Game = function (_Component) {
         }
       });
 
-      //console.log("document.cookie", document.cookie)
+      this.props.socket.on('win', function (alert_message) {
+        alert(alert_message);
+        _this2.forceUpdate();
+        location.reload();
+      });
 
-      //var cookies = document.cookie.split(';');
+      this.props.socket.on('meme_submission', function (meme_submission) {
 
-      var urlArray = window.location.href.split("/");
-      var room_id = String(urlArray[urlArray.length - 1]);
-
-      var nickname = localStorage.getItem("nickname" + room_id);
-
-      var connection = {
-        room_id: room_id,
-        nickname: nickname
-      };
-
-      this.props.socket.emit("room", connection);
-
-      if (!!nickname) {
-        this.setState({ nickname: nickname });
-      }
-
-      /*
-       if (this.state.nickname != '' && this.state.room_id != '') {
-         console.log("we here")
-        var connection = {
-          room_id: this.state.room_id,
-          nickname: this.state.nickname
+        console.log("recieved da event", meme_submission);
+        /*
+         structure of meme_submission
+         var meme_submission = {
+          captioned_meme : captioned_image_url,
+          nickname: nickname,
+          client_id : client_id
         }
-         this.props.socket.emit("room", connection);
-      }
-       */
+         */
+        _this2.setState({ submitted_memes: [meme_submission].concat(_toConsumableArray(_this2.state.submitted_memes)) });
 
-      this.props.socket.on('submitted_meme_url', function (meme_url) {
-        _this2.setState({ submitted_memes: [meme_url].concat(_toConsumableArray(_this2.state.submitted_memes)) });
+        console.log("this.state.submitted_memes", _this2.state.submitted_memes);
+        console.log("typeof(this.state.submitted_memes)", _typeof(_this2.state.submitted_memes));
       });
 
       this.props.socket.on('cards', function (cards) {
@@ -37325,12 +37339,22 @@ var Game = function (_Component) {
   }, {
     key: 'submitMeme',
     value: function submitMeme() {
+
+      //meme_id will allow us to pick a winner correctly
+
       if (!this.state.didSubmit) {
         var captioned_image_url = this.state.captioned_img_url;
-        console.log("this.state.submitted_memes", this.state.submitted_memes);
+        var meme_submission = {
+          captioned_meme: captioned_image_url,
+          nickname: this.state.nickname,
+          client_id: this.state.client_id
+        };
+
+        console.log("meme_submission", meme_submission);
         this.setState({ submitted_memes: [captioned_image_url].concat(_toConsumableArray(this.state.submitted_memes)) });
         console.log("this.state.submitted_memes", this.state.submitted_memes);
-        this.props.socket.emit('submitted_meme_url', captioned_image_url);
+
+        this.props.socket.emit('meme_submission', meme_submission);
         this.setState({ didSubmit: true });
       }
     }
@@ -37346,7 +37370,11 @@ var Game = function (_Component) {
     }
   }, {
     key: 'selectRoundWinner',
-    value: function selectRoundWinner() {
+    value: function selectRoundWinner(winner_client_id) {
+
+      console.log("You selected a winner!", winner_client_id);
+      this.props.socket.emit('winner', winner_client_id);
+
       this.setState({
         roundNumber: roundNumber + 1,
         enteredName: false,
@@ -37361,9 +37389,6 @@ var Game = function (_Component) {
         submitted_memes: [],
         didSubmit: false
       });
-
-      this.props.socket.emit('new_round');
-      console.log("You selected a winner!");
     }
   }, {
     key: 'generateMeme',
@@ -37428,8 +37453,6 @@ var Game = function (_Component) {
       if (this.state.cards.length > 0) {
         var memes = this.state.cards;
 
-        console.log('memes', memes);
-
         for (var i = 0; i < memes.length; i++) {
           memes_arr.push(this.generateMeme(memes[i], i));
         }
@@ -37439,13 +37462,13 @@ var Game = function (_Component) {
         return meme;
       }) : null;
 
-      var submitted_memes = this.state.submitted_memes.map(function (meme_url, index) {
+      var submitted_memes = this.state.submitted_memes.map(function (meme_submission, index) {
         return _react2.default.createElement(
           'button',
           { className: 'submittedMemeButton', onClick: function onClick() {
-              return _this5.selectRoundWinner();
+              return _this5.selectRoundWinner(meme_submission.client_id);
             } },
-          _react2.default.createElement('img', { src: meme_url, key: index, className: 'submittedMeme', alt: 'n/a' })
+          _react2.default.createElement('img', { src: meme_submission.captioned_meme, key: index, className: 'submittedMeme', alt: 'n/a' })
         );
       });
 
