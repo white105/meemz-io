@@ -13,7 +13,7 @@ class MemeService {
 
     axios.post('/urlgenerator').then((response) => {
       let unique_session_id = response.data.unique_session_id
-      window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString()
+      window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString()
     })
     .catch(function (error) {
       console.log(error);
@@ -25,7 +25,7 @@ class MemeService {
     //pretty much done
     axios.post('/urlgenerator').then((response) => {
       let unique_session_id = response.data.unique_session_id
-      window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString()
+      window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString()
     })
     .catch(function (error) {
       console.log(error);

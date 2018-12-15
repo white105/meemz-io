@@ -62,8 +62,6 @@ class Game extends Component {
 
     this.props.socket.emit("room", connection);
 
-    console.log("localStorage nickname", nickname)
-
     if (!!nickname) {
       this.setState({ nickname : nickname })
     }
