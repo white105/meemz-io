@@ -23,6 +23,7 @@
   "homepage": "https://github.com/white105/DandyHacks#readme",
   "dependencies": {
     "@google-cloud/storage": "^2.3.1",
+    "alertifyjs": "^1.11.2",
     "body-parser": "^1.18.2",
     "chart.js": "^2.7.3",
     "concurrently": "^4.1.0",

@@ -107,20 +107,8 @@ io.on('connection', socket => {
 
     console.log("deal event happened")
 
-    socket.on('meme_submission', meme_submission => {
-
-      /*
-      var meme_submission = {
-        captioned_meme : captioned_image_url,
-        nickname: this.state.nickname
-      }
-      */
-
-      console.log("server submit", meme_submission)
-      console.log("dealer", dealer)
-
-      io.to(`${dealer}`).emit('meme_submission', meme_submission);
-    });
+    //submits captioned meme to the dealer
+    socket.on('meme_submission', meme_submission => { io.to(`${dealer}`).emit('meme_submission', meme_submission) });
 
     let collection = memes
 
@@ -276,6 +264,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-//server.listen(3000)
+server.listen(3000)
 
-server.listen(process.env.PORT || 5000)
+//server.listen(process.env.PORT || 5000)

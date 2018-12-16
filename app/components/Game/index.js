@@ -7,6 +7,59 @@ import MemeService from '../../services/MemeService/index'
 import LeaderBoards from '../LeaderBoards/index'
 import UserFormWithSocket from '../UserForm/index'
 import SocketContext from '../../socket-context'
+import alertify from 'alertifyjs';
+
+alertify.defaults = {
+    // dialogs defaults
+    autoReset:true,
+    basic:false,
+    closable:true,
+    closableByDimmer:true,
+    frameless:false,
+    maintainFocus:true, // <== global default not per instance, applies to all dialogs
+    maximizable:true,
+    modal:true,
+    movable:true,
+    moveBounded:false,
+    overflow:true,
+    padding: true,
+    pinnable:true,
+    pinned:true,
+    preventBodyShift:false, // <== global default not per instance, applies to all dialogs
+    resizable:true,
+    startMaximized:false,
+    transition:'pulse',
+
+    // notifier defaults
+    notifier:{
+        // auto-dismiss wait time (in seconds)
+        delay:5,
+        // default position
+        position:'bottom-right',
+        // adds a close button to notifier messages
+        closeButton: false
+    },
+
+    // language resources
+    glossary:{
+        // dialogs default title
+        title:'AlertifyJS',
+        // ok button text
+        ok: 'OK',
+        // cancel button text
+        cancel: 'Cancel'
+    },
+
+    // theme settings
+    theme:{
+        // class name attached to prompt dialog input textbox.
+        input:'ajs-input',
+        // class name attached to ok button
+        ok:'ajs-ok',
+        // class name attached to cancel button
+        cancel:'ajs-cancel'
+    }
+};
 
 import MessagesWithSocket from '../Messages/index'
 
@@ -23,7 +76,6 @@ const defaultState = {
   bottom_caption: 'Make her pay',
   isDealer: false,
   submitted_memes: [],
-  didSubmit: false,
   roundNumber: 1
 }
 
@@ -119,9 +171,6 @@ class Game extends Component {
 
       */
       this.setState({ submitted_memes : [meme_submission, ...this.state.submitted_memes] })
-
-      console.log("this.state.submitted_memes", this.state.submitted_memes)
-      console.log("typeof(this.state.submitted_memes)", typeof(this.state.submitted_memes))
     })
 
 
@@ -139,16 +188,19 @@ class Game extends Component {
 
     this.props.socket.on('win', (client_id) => {
       if (this.state.client_id === client_id) {
-        alert("You won!")
+        alertify.alert('You won!', 'Select OK to proceed to the next round', function(){
+          alertify.success('Ok');
+        });
       } else {
-        alert("You lost!")
+        alertify.alert('You lost!', 'Select OK to proceed to the next round', function(){
+          alertify.success('Ok');
+        });
       }
       this.importantCode();
     })
 
 
   }
-
 
 
 
@@ -234,11 +286,6 @@ class Game extends Component {
         nickname: this.state.nickname,
         client_id : this.state.client_id
       }
-
-      console.log("meme_submission", meme_submission)
-      this.setState({ submitted_memes : [captioned_image_url, ...this.state.submitted_memes] })
-      console.log("this.state.submitted_memes", this.state.submitted_memes)
-
 
       this.props.socket.emit('meme_submission', meme_submission)
       this.setState({ didSubmit : true })
