@@ -2908,7 +2908,7 @@ var MemeService = function () {
 
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -2920,7 +2920,7 @@ var MemeService = function () {
       //pretty much done
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
