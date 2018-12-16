@@ -276,6 +276,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-server.listen(3000)
+//server.listen(3000)
 
-//server.listen(process.env.PORT || 5000)
+server.listen(process.env.PORT || 5000)
