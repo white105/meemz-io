@@ -36,6 +36,7 @@ class Game extends Component {
       nickname: '',
       room_id: '',
       client_id: '',
+      score: 0,
       cards: [],
       current_players: [],
       captioned_img_url: '',
@@ -62,6 +63,7 @@ class Game extends Component {
     this.toggle_dealer = this.toggle_dealer.bind(this)
     this.entered_name = this.entered_name.bind(this)
     this.importantCode = this.importantCode.bind(this)
+    this.generateSubmittedMeme = this.generateSubmittedMeme.bind(this)
   }
 
   importantCode() {
@@ -73,7 +75,8 @@ class Game extends Component {
 
     var connection = {
       room_id: room_id,
-      nickname: nickname
+      nickname: nickname,
+
     }
 
     this.props.socket.emit("room", connection);
@@ -90,6 +93,14 @@ class Game extends Component {
     if (!!nickname) {
       this.setState({ nickname : nickname })
     }
+
+    this.props.socket.on('captions', (captions) => {
+      console.log("new captions")
+      this.setState({
+        top_caption : captions.top_caption,
+        bottom_caption : captions.bottom_caption
+       })
+    })
 
     this.props.socket.on('dealer', bool => { this.setState({ isDealer : bool }) })
 
@@ -134,6 +145,8 @@ class Game extends Component {
       }
       this.importantCode();
     })
+
+
   }
 
 
@@ -236,6 +249,13 @@ class Game extends Component {
     let top_caption = document.getElementById("topCaption").value
     let bottom_caption = document.getElementById("bottomCaption").value
 
+    var captions = {
+      top_caption: top_caption,
+      bottom_caption: bottom_caption
+    }
+
+    this.props.socket.emit('captions', captions)
+
     if (top_caption != '' || bottom_caption != '') {
       this.setState({top_caption : top_caption, bottom_caption : bottom_caption})
     }
@@ -258,6 +278,10 @@ class Game extends Component {
     } else {
       return ( <button key={meme_id} className='memeButtonNotVisible' onClick={() => this.memeSelected(meme_id)}><img src={meme_data_url} className='memeNotVisible' alt='n/a'/></button> )
     }
+  }
+
+  generateSubmittedMeme(meme_data, position) {
+    return <button className='submittedMemeButton' onClick={() => this.selectRoundWinner(meme_data.client_id)}><img src={meme_data.captioned_meme} key={position} className='submittedMeme' alt='n/a'/></button>
   }
 
   toggle_dealer() {
@@ -283,11 +307,24 @@ class Game extends Component {
 
     let allContent = (memes_arr.length > 0) ? memes_arr.map(function(meme) { return meme } ) : null
 
+    let submittedMemes =  this.state.submitted_memes
 
-    const submitted_memes = this.state.submitted_memes.map((meme_submission, index) => {
-      return <button className='submittedMemeButton' onClick={() => this.selectRoundWinner(meme_submission.client_id)}><img src={meme_submission.captioned_meme} key={index} className='submittedMeme' alt='n/a'/></button>
-    })
+      console.log('submittedMemes', submittedMemes)
 
+    let submitted_memes_row1 = []
+    let submitted_memes_row2 = []
+
+    for (var i=0; i<submittedMemes.length; i++) {
+      console.log('submittedMemes', submittedMemes[0])
+      if (i <= 3) {
+        submitted_memes_row1.push(this.generateSubmittedMeme(submittedMemes[i]))
+      } else {
+        submitted_memes_row2.push(this.generateSubmittedMeme(submittedMemes[i]))
+      }
+    }
+
+    let row1_submitted_memes = (submitted_memes_row1.length > 0) ? submitted_memes_row1.map(function(submitted_meme) { return submitted_meme } ) : null
+    let row2_submitted_memes = (submitted_memes_row2.length > 0) ? submitted_memes_row2.map(function(submitted_meme) { return submitted_meme } ) : null
 
     let userForm = (!this.state.nickname) ? <UserFormWithSocket entered_name={this.entered_name}></UserFormWithSocket> : undefined
 
@@ -338,7 +375,8 @@ class Game extends Component {
 
 
           <div className='submittedMemesContainer'>
-            {submitted_memes}
+            <div className='submittedMemesRow'>{row1_submitted_memes}</div>
+            <div className='submittedMemesRow'>{row2_submitted_memes}</div>
           </div>
 
         </div>

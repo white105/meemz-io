@@ -2908,7 +2908,7 @@ var MemeService = function () {
 
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -2920,7 +2920,7 @@ var MemeService = function () {
       //pretty much done
       _axios2.default.post('/urlgenerator').then(function (response) {
         var unique_session_id = response.data.unique_session_id;
-        window.location.href = 'https://meemz-io.herokuapp.com/' + 'game/' + unique_session_id.toString();
+        window.location.href = 'http://localhost:3000/' + 'game/' + unique_session_id.toString();
       }).catch(function (error) {
         console.log(error);
       });
@@ -37181,6 +37181,7 @@ var Game = function (_Component) {
       nickname: '',
       room_id: '',
       client_id: '',
+      score: 0,
       cards: [],
       current_players: [],
       captioned_img_url: '',
@@ -37206,6 +37207,7 @@ var Game = function (_Component) {
     _this.toggle_dealer = _this.toggle_dealer.bind(_this);
     _this.entered_name = _this.entered_name.bind(_this);
     _this.importantCode = _this.importantCode.bind(_this);
+    _this.generateSubmittedMeme = _this.generateSubmittedMeme.bind(_this);
     return _this;
   }
 
@@ -37222,6 +37224,7 @@ var Game = function (_Component) {
       var connection = {
         room_id: room_id,
         nickname: nickname
+
       };
 
       this.props.socket.emit("room", connection);
@@ -37237,6 +37240,14 @@ var Game = function (_Component) {
       if (!!nickname) {
         this.setState({ nickname: nickname });
       }
+
+      this.props.socket.on('captions', function (captions) {
+        console.log("new captions");
+        _this2.setState({
+          top_caption: captions.top_caption,
+          bottom_caption: captions.bottom_caption
+        });
+      });
 
       this.props.socket.on('dealer', function (bool) {
         _this2.setState({ isDealer: bool });
@@ -37382,6 +37393,13 @@ var Game = function (_Component) {
       var top_caption = document.getElementById("topCaption").value;
       var bottom_caption = document.getElementById("bottomCaption").value;
 
+      var captions = {
+        top_caption: top_caption,
+        bottom_caption: bottom_caption
+      };
+
+      this.props.socket.emit('captions', captions);
+
       if (top_caption != '' || bottom_caption != '') {
         this.setState({ top_caption: top_caption, bottom_caption: bottom_caption });
       }
@@ -37434,6 +37452,19 @@ var Game = function (_Component) {
       }
     }
   }, {
+    key: 'generateSubmittedMeme',
+    value: function generateSubmittedMeme(meme_data, position) {
+      var _this6 = this;
+
+      return _react2.default.createElement(
+        'button',
+        { className: 'submittedMemeButton', onClick: function onClick() {
+            return _this6.selectRoundWinner(meme_data.client_id);
+          } },
+        _react2.default.createElement('img', { src: meme_data.captioned_meme, key: position, className: 'submittedMeme', alt: 'n/a' })
+      );
+    }
+  }, {
     key: 'toggle_dealer',
     value: function toggle_dealer() {
       this.setState({ isDealer: !this.state.isDealer });
@@ -37447,7 +37478,6 @@ var Game = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this6 = this;
 
       var memes_arr = [];
 
@@ -37463,15 +37493,28 @@ var Game = function (_Component) {
         return meme;
       }) : null;
 
-      var submitted_memes = this.state.submitted_memes.map(function (meme_submission, index) {
-        return _react2.default.createElement(
-          'button',
-          { className: 'submittedMemeButton', onClick: function onClick() {
-              return _this6.selectRoundWinner(meme_submission.client_id);
-            } },
-          _react2.default.createElement('img', { src: meme_submission.captioned_meme, key: index, className: 'submittedMeme', alt: 'n/a' })
-        );
-      });
+      var submittedMemes = this.state.submitted_memes;
+
+      console.log('submittedMemes', submittedMemes);
+
+      var submitted_memes_row1 = [];
+      var submitted_memes_row2 = [];
+
+      for (var i = 0; i < submittedMemes.length; i++) {
+        console.log('submittedMemes', submittedMemes[0]);
+        if (i <= 3) {
+          submitted_memes_row1.push(this.generateSubmittedMeme(submittedMemes[i]));
+        } else {
+          submitted_memes_row2.push(this.generateSubmittedMeme(submittedMemes[i]));
+        }
+      }
+
+      var row1_submitted_memes = submitted_memes_row1.length > 0 ? submitted_memes_row1.map(function (submitted_meme) {
+        return submitted_meme;
+      }) : null;
+      var row2_submitted_memes = submitted_memes_row2.length > 0 ? submitted_memes_row2.map(function (submitted_meme) {
+        return submitted_meme;
+      }) : null;
 
       var userForm = !this.state.nickname ? _react2.default.createElement(_index6.default, { entered_name: this.entered_name }) : undefined;
 
@@ -37551,7 +37594,16 @@ var Game = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'submittedMemesContainer' },
-              submitted_memes
+              _react2.default.createElement(
+                'div',
+                { className: 'submittedMemesRow' },
+                row1_submitted_memes
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'submittedMemesRow' },
+                row2_submitted_memes
+              )
             )
           ),
           _react2.default.createElement(

@@ -68,6 +68,11 @@ io.on('connection', socket => {
 
     //list of clients in specific game room
     var clients = io.sockets.adapter.rooms[socket.room].sockets;
+    let numPeople = clients.length;
+
+    if (numPeople >= 9) {
+      socket.leave(connection.room_id)
+    }
 
     socket.on("winner", winner_client_id => {
 
@@ -132,6 +137,10 @@ io.on('connection', socket => {
       }
     }
 
+  });
+
+  socket.on("captions", captions => {
+    socket.in(socket.room).emit("captions", captions);
   });
 
   socket.on("message", msg => {
@@ -272,6 +281,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-//server.listen(3000)
+server.listen(3000)
 
-server.listen(process.env.PORT || 5000)
+//server.listen(process.env.PORT || 5000)
