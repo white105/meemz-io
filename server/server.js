@@ -107,6 +107,21 @@ io.on('connection', socket => {
 
     console.log("deal event happened")
 
+    socket.on('meme_submission', meme_submission => {
+
+      /*
+      var meme_submission = {
+        captioned_meme : captioned_image_url,
+        nickname: this.state.nickname
+      }
+      */
+
+      console.log("server submit", meme_submission)
+      console.log("dealer", dealer)
+
+      io.to(`${dealer}`).emit('meme_submission', meme_submission);
+    });
+
     let collection = memes
 
     num_memes = collection.length;
@@ -155,26 +170,6 @@ io.on('connection', socket => {
     });
   });
 
-
-  socket.on('meme_submission', meme_submission => {
-
-    /*
-    var meme_submission = {
-      captioned_meme : captioned_image_url,
-      nickname: this.state.nickname
-    }
-    */
-
-    console.log("server submit", meme_submission)
-
-    console.log('captioned_meme', meme_submission.captioned_meme)
-    console.log('nickname', meme_submission.nickname)
-
-
-
-    socket.in(socket.room).emit('meme_submission', meme_submission);
-    //socket.broadcast.emit('submitted_meme_url', meme_url)
-  });
 
   socket.on("new_round", round => {
 
@@ -281,6 +276,6 @@ socket.on('memes', (memes) => {
 
 app.use('/', indexRoutes);
 
-//server.listen(3000)
+server.listen(3000)
 
-server.listen(process.env.PORT || 5000)
+//server.listen(process.env.PORT || 5000)

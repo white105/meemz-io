@@ -508,13 +508,13 @@ hr {
   width: 100%;
   margin-top: 1rem;
   border-radius: .2rem;
-  background: #0084FF; }
+  background: #3578e5; }
 
 #themMessage {
   position: relative;
   height: 100%;
   width: 100%;
-  background: gray;
+  background: #f1f0f0;
   margin-top: 1rem; }
 
 .messageIcon {
